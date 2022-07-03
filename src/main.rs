@@ -24,6 +24,13 @@ fn run() -> Result<(), Box<dyn Error>> {
 		println!("0x{:x}", b) 
 	}
 	println!("{}", buffer);
+
+	loop {
+		match vm.next() {
+			Some(x) => println!("{:?}", x),
+			None => {}
+		}
+	}
 	
 	Ok(())
 }
@@ -31,23 +38,12 @@ fn run() -> Result<(), Box<dyn Error>> {
 fn main() {
 	run().unwrap();
 }
+
 // VM
 struct Vm {
 	code: Vec<u8>, // smart contract code
 	pc: usize, // current instruction
 }
-
-impl Vm {
-	fn new_from_file(filename: &str) -> Result<Vm, Box<Error>> {
-		let mut f = File::open(filename)?;
-		let mut buffer = String::new();
-		f.read_to_string(&mut buffer)?;
-
-		let code = decode(&buffer)?;
-		Ok(Vm { code: code, pc: 0})
-	}
-}
-
 
 enum Opcode {
 	STOP, // 0x00
@@ -61,6 +57,14 @@ enum Opcode {
 }
 
 impl Vm {
+	fn new_from_file(filename: &str) -> Result<Vm, Box<Error>> {
+		let mut f = File::open(filename)?;
+		let mut buffer = String::new();
+		f.read_to_string(&mut buffer)?;
+		let code = decode(&buffer)?;
+		Ok(Vm { code: code, pc: 0})
+	}
+
 	fn next(&mut self) -> Option<Opcode> {
 		match self.code[self.pc] {
 			0x00 => {
