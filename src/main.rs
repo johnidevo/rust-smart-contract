@@ -25,7 +25,22 @@ impl Opcode {
         }
     }
 }
+
+
 */
+#[derive(Debug)]
+enum Opcode {
+    STOP(usize), // 0x00
+    ADD(usize), // 0x01
+    MUL(usize), // 0x02
+
+    PUSH1(usize, u8), // 0x60
+    PUSH2(usize, u8, u8), // 0x61
+    PUSH32(usize, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8), // 0x7f 
+
+    EOF,
+}
+
 
 // update run function
 fn run() -> Result<(), Box<dyn Error>> {
@@ -35,15 +50,14 @@ fn run() -> Result<(), Box<dyn Error>> {
     println!("In file {}", artifacts);
 
     let mut vm = Vm::new_from_file(&artifacts)?;
-/*
+
     loop {
         match vm.next() {
             Some(Opcode::EOF) => break,
-            Some(x) => x.describe(),
+            Some(x) => println!("{:?}", x),
             None => {}
         }
     }
-*/
     Ok(())
 }
 
@@ -64,7 +78,6 @@ fn run() -> Result<(), Box<dyn Error>> {
 
     loop {
         match vm.next() {
-            Some(Opcode::EOF) => break,
             Some(x) => println!("{:?}", x),
             None => {}
         }
@@ -109,44 +122,8 @@ impl Vm {
 
     fn next(&mut self) -> Option<Opcode> {
         match self.code[self.pc] {
-            0x00 => {
-                self.pc += 1;
-                Some(Opcode::STOP)
-            },
-            0x01 => {
-                self.pc += 1;
-                Some(Opcode::ADD)
-            },
-            0x02 => {
-                self.pc += 1;
-                Some(Opcode::MUL)
-            },
-            0x60 => {
-                let value = self.code[self.pc+1];
-                self.pc += 2;
-                Some(Opcode::PUSH1(value))
-            },
-            Ox61 => {
-                let value0 = self.code[self.pc+1];
-                let value1 = self.code[self.pc+2];
-                self.pc += 3;
-                Some(Opcode::PUSH2(value0, value1))
-            }
             _ => { self.pc += 1; None}
         }
     }
-}
-
-
-enum Opcode {
-
-    STOP, // 0x00
-    ADD, // 0x01
-    MUL, // 0x02
-    
-    PUSH1(u8), // 0x60
-    PUSH2(u8, u8), // 0x61
-    
-    PUSH32(u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8), // 0x7f 
 }
 
