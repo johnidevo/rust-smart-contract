@@ -11,7 +11,6 @@ fn decode(s: &str) -> Result<Vec<u8>, ParseIntError> {
 		.collect()
 }
 
-/*
 impl Opcode {
     fn describe(&self) {
         match self {
@@ -26,8 +25,6 @@ impl Opcode {
     }
 }
 
-
-*/
 #[derive(Debug)]
 enum Opcode {
     STOP(usize), // 0x00
@@ -54,7 +51,8 @@ fn run() -> Result<(), Box<dyn Error>> {
 	loop {
 		match vm.next() {
 			Some(Opcode::EOF) => break,
-			Some(x) => println!("{:?}", x),
+			//Some(x) => println!("{:?}", x),
+			Some(x) => x.describe(),
 			None => {}
 		}
 	}
@@ -109,12 +107,12 @@ impl Vm {
 		*/
 
 		let code = decode(&buffer)?;
-
+/*
 		for b in &code {
 			println!("0x{:x}", b) 
 		}
 		println!("{}", buffer);
-
+*/
 		Ok(Vm { code: code, pc: 0})
 	}
 
