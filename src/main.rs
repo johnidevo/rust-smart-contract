@@ -46,19 +46,20 @@ enum Opcode {
 fn run() -> Result<(), Box<dyn Error>> {
 
 	let artifacts = "./Artifacts/Addition.bin-runtime"; //command path gap, cargo run
-    
-    println!("In file {}", artifacts);
 
-    let mut vm = Vm::new_from_file(&artifacts)?;
+	println!("In file {}", artifacts);
 
-    loop {
-        match vm.next() {
-            Some(Opcode::EOF) => break,
-            Some(x) => println!("{:?}", x),
-            None => {}
-        }
-    }
-    Ok(())
+	let mut vm = Vm::new_from_file(&artifacts)?;
+
+	loop {
+		match vm.next() {
+			Some(Opcode::EOF) => break,
+			Some(x) => println!("{:?}", x),
+			None => {}
+		}
+	}
+	
+	Ok(())
 }
 
 /*
@@ -117,38 +118,38 @@ impl Vm {
 		Ok(Vm { code: code, pc: 0})
 	}
 
-    fn next(&mut self) -> Option<Opcode> {
-        if self.pc >= self.code.len() {
-            return Some(Opcode::EOF);
-        }
+	fn next(&mut self) -> Option<Opcode> {
+			if self.pc >= self.code.len() {
+					return Some(Opcode::EOF);
+			}
 
-        let addr = self.pc;
-        match self.code[addr] {
-             0x00 => {
-                self.pc += 1;
-                Some(Opcode::STOP(addr))
-            },
-            0x01 => {
-                self.pc += 1;
-                Some(Opcode::ADD(addr))
-            },
-            0x02 => {
-                self.pc += 1;
-                Some(Opcode::MUL(addr))
-            },
-            0x60 => {
-                let value = self.code[self.pc+1];
-                self.pc += 2;
-                Some(Opcode::PUSH1(addr, value))
-            },
-            0x61 => {
-                let value0 = self.code[self.pc+1];
-                let value1 = self.code[self.pc+2];
-                self.pc += 3;
-                Some(Opcode::PUSH2(addr, value0, value1))
-            },
-            _ => { self.pc += 1;  None}
-        }
-    }
+			let addr = self.pc;
+			match self.code[addr] {
+					 0x00 => {
+							self.pc += 1;
+							Some(Opcode::STOP(addr))
+					},
+					0x01 => {
+							self.pc += 1;
+							Some(Opcode::ADD(addr))
+					},
+					0x02 => {
+							self.pc += 1;
+							Some(Opcode::MUL(addr))
+					},
+					0x60 => {
+							let value = self.code[self.pc+1];
+							self.pc += 2;
+							Some(Opcode::PUSH1(addr, value))
+					},
+					0x61 => {
+							let value0 = self.code[self.pc+1];
+							let value1 = self.code[self.pc+2];
+							self.pc += 3;
+							Some(Opcode::PUSH2(addr, value0, value1))
+					},
+					_ => { self.pc += 1;  None}
+			}
+	}
 }
 
