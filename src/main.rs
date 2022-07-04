@@ -34,7 +34,7 @@ enum Opcode {
     PUSH1(usize, u8), // 0x60
     PUSH2(usize, u8, u8), // 0x61
     //PUSH32(usize, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8), // 0x7f 
-
+	// test commit mesage terminal
     EOF,
 }
 
