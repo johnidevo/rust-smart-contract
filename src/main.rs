@@ -1,3 +1,4 @@
+
 use std::fs::File;
 use std::io::prelude::*;
 use std::num::ParseIntError;
@@ -20,7 +21,6 @@ impl Opcode {
 			Opcode::PUSH1(line, x) => println!("0x{:x}\tPUSH1\tPlace 1-byte item on the stack 0x{:x}", line, x),
 			Opcode::PUSH2(line, x0, x1) => println!("0x{:x}\tPUSH2\tPlace 2-bytes item on the stack 0x{:x} 0x{:x}", line, x0, x1),
 			_ => println!("Unknown opcode")
-
 		}
 	}
 }
