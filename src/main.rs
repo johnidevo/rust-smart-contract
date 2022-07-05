@@ -47,7 +47,7 @@ fn run() -> Result<(), Box<dyn Error>> {
 	println!("In file {}", artifacts);
 
 	let mut vm = Vm::new_from_file(&artifacts)?;
-
+	// execute
 	loop {
 		match vm.next() {
 			Some(Opcode::EOF) => break,
@@ -118,6 +118,7 @@ impl Vm {
 		//Ok(Vm { code: code, pc: 0, stack: Vec::new()})
 	}
 
+	// decoding
 	fn next(&mut self) -> Option<Opcode> {
 			if self.pc >= self.code.len() {
 					return Some(Opcode::EOF);
