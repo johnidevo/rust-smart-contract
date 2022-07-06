@@ -1,44 +1,26 @@
-mod evm;
-use evm::vm::Vm;
-use evm::opcode::Opcode;
-use std::error::Error;
-use std::env;
 
-fn debug(vm: &mut Vm) {
-	loop {
-		match vm.next() {
-			Opcode::EOF => break,
-			x => x.describe(),
+impl Opcode {
+	pub fn describe(&self) {
+		match self {
+			Opcode::STOP(line) => println!("0x{:x}\tSTOP\tHalts execution", line),
+			Opcode::ADD(line) => println!("0x{:x}\tADD\tAddition operation", line),
+			Opcode::MUL(line) => println!("0x{:x}\tMUL\tMultiplication operation", line),
+			Opcode::PUSH1(line, x) => println!("0x{:x}\tPUSH1\tPlace 1-byte item on the stack 0x{:x}", line, x),
+			Opcode::PUSH2(line, x0, x1) => println!("0x{:x}\tPUSH2\tPlace 2-bytes item on the stack 0x{:x} 0x{:x}", line, x0, x1),
+			_ => println!("Unknown opcode")
 		}
 	}
 }
 
-fn interpret(vm: &mut Vm) {
-	while !vm.at_end {
-		vm.interpret();
-	}
-	vm.print_stack();
-}
+#[derive(Debug)]
+pub enum Opcode {
+	STOP(usize), // 0x00
+	ADD(usize), // 0x01
+	MUL(usize), // 0x02
 
-fn run() -> Result<(), Box<Error>> {
-
-	let args: Vec<String> = env::args().collect();
-	let function = args[1].clone();
-	let filename = args[2].clone();
-
-	println!("In file {}", filename);
-
-	let mut vm = Vm::new_from_file(&filename)?;
-	println!("Correctly loaded VM");
-
-	match &*function {
-		"debug" => debug(&mut vm),
-		"run" => interpret(&mut vm),
-		_ => panic!("Expect either 'debug' or 'run' for first parameter")
-	}
-	Ok(())
-}
-
-fn main() {
-	run().unwrap();
+	PUSH1(usize, u8), // 0x60
+	PUSH2(usize, u8, u8), // 0x61
+	//PUSH32(usize, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8), // 0x7f 
+	// test commit mesage terminal
+	EOF,
 }
