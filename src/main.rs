@@ -29,7 +29,7 @@ fn run() -> Result<(), Box<dyn Error>> {
 
 	//let args: Vec<String> = env::args().collect();
 	let function = "debug"; //args[1].clone();
-	let filename = "../../Artifacts/Addition.bin-runtime"; //args[2].clone();
+	let filename = "./Artifacts/Addition.bin-runtime"; //args[2].clone();
 
 	println!("In file {}", filename);
 

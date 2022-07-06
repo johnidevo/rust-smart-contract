@@ -2,6 +2,8 @@ use std::fs::File;
 use std::io::prelude::*;
 use std::num::ParseIntError;
 use std::error::Error;
+//use std::path::Path;
+
 
 use super::opcode::Opcode;
 
@@ -21,6 +23,10 @@ pub struct Vm {
 
 impl Vm {
 	pub fn new_from_file(filename: &str) -> Result<Vm, Box<dyn Error>> {
+
+    //println!("{}", Path::new("./Artifacts/evm/mod.rs").exists());
+		//println!("{}", filename);
+		
 		let mut file = File::open(filename).expect("File not found");
 		let mut buffer = String::new();
 		file.read_to_string(&mut buffer).expect("Error while reading file");
