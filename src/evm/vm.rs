@@ -3,7 +3,9 @@ use std::io::prelude::*;
 use std::num::ParseIntError;
 use std::error::Error;
 //use std::path::Path;
+//use crypto_bigint::U256;
 
+use primitive_types::U256;
 
 use super::opcode::Opcode;
 
@@ -18,7 +20,8 @@ pub fn decode(s: &str) -> Result<Vec<u8>, ParseIntError> {
 pub struct Vm {
 	pub code: Vec<u8>, // smart contract code
 	pub pc: usize, // current instruction
-	//pub stack: Vec<U256>
+	pub stack: Vec<U256>,
+	pub at_end: bool,
 }
 
 impl Vm {
@@ -44,7 +47,7 @@ impl Vm {
 		}
 		println!("{}", buffer);
 */
-		Ok(Vm { code: code, pc: 0})
+		Ok(Vm { code: code, pc: 0, stack: Vec::new(), at_end: false})
 		//Ok(Vm { code: code, pc: 0, stack: Vec::new()})
 	}
 
@@ -82,7 +85,7 @@ impl Vm {
 			_ => { self.pc += 1;  None}
 		}
 	}
-/*
+
 	pub fn interpret(&mut self) {
         let maybe_op = self.next();
 
@@ -116,9 +119,8 @@ impl Vm {
         }
 
     }
-*/
-/*
-	pub fn print_stack(&self) {
+    // see part 2 for print_stack
+    pub fn print_stack(&self) {
         self.stack
             .iter()
             .enumerate()
@@ -129,6 +131,11 @@ impl Vm {
                 println!("|{}:\t{:?}|", i, bytes)
             });
     }
-*/
+
+    pub fn print_debug(&self) {
+        println!("pc:{}\n", self.pc);
+        println!("Stack:");
+        self.print_stack();
+    }
 }
 

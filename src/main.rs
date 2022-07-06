@@ -1,11 +1,36 @@
 
-
 mod evm;
 use evm::vm::Vm;
 use evm::opcode::Opcode;
 use std::error::Error;
 //use std::env;
+use std::io;
 
+fn debug(vm: &mut Vm) {
+println!("Correctly loaded debug");
+	loop {
+		if vm.at_end {
+			break;
+		}
+
+		// Debugger.
+		// c to continue
+		// s to print stack
+		// q to quit
+		let mut input = String::new();
+		io::stdin().read_line(&mut input).ok().expect("Couldn't read line");
+
+		match &*input {
+			"c\n" => vm.interpret(),
+			"s\n" => vm.print_debug(),
+			"q\n" => break,
+			_ => println!("Please type either c, s or q"), 
+		}
+	}
+
+}
+
+/*
 fn debug(vm: &mut Vm) {
 	loop {
 		match vm.next() {
@@ -17,6 +42,7 @@ fn debug(vm: &mut Vm) {
 		}
 	}
 }
+*/
 /*
 fn interpret(vm: &mut Vm) {
 	while !vm.at_end {

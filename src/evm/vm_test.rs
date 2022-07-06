@@ -1,3 +1,7 @@
+// evm/vm_test.rs
+use super::vm::Vm;
+
+
 use super::vm::Vm;
 fn create_vm(binary: Vec<u8>) -> Vm {
     Vm { code: binary, pc: 0, stack: Vec::new(), at_end: false}
