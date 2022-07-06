@@ -12,7 +12,7 @@ impl Vm_test {
 	pub fn addition() {
 		// 1 + 5
 		let binary = vec![0x60, 0x0f, 0x60, 0x01, 0x01, 0x00];
-		let mut vm = create_vm(binary); //moved
+		let mut vm = self.create_vm(binary); //moved
 
 		// execute three instructions.
 		// push 0x0f

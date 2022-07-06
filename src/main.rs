@@ -1,6 +1,7 @@
 
 mod evm;
 use evm::vm::Vm;
+#[warn(unused_imports)]
 use evm::opcode::Opcode;
 
 
@@ -33,7 +34,7 @@ fn debugger(vm: &mut Vm) {
 
 }
 
-/*
+
 fn debug(vm: &mut Vm) {
 	loop {
 		match vm.next() {
@@ -45,7 +46,7 @@ fn debug(vm: &mut Vm) {
 		}
 	}
 }
-*/
+
 
 
 fn vm_test(vm_test: &mut Vm_test) {
