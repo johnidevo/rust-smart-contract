@@ -7,12 +7,12 @@ use std::error::Error;
 use std::io;
 
 fn debug(vm: &mut Vm) {
-println!("Correctly loaded debug");
 	loop {
 		if vm.at_end {
 			break;
 		}
 
+println!("Correctly loaded loop");
 		// Debugger.
 		// c to continue
 		// s to print stack
