@@ -3,7 +3,6 @@ use std::io::prelude::*;
 use std::num::ParseIntError;
 use std::error::Error;
 //use std::path::Path;
-//use crypto_bigint::U256;
 
 use primitive_types::U256;
 
