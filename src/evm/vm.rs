@@ -15,7 +15,6 @@ pub fn decode(s: &str) -> Result<Vec<u8>, ParseIntError> {
 		.collect()
 }
 
-
 pub struct Vm {
 	pub code: Vec<u8>, // smart contract code
 	pub pc: usize, // current instruction

@@ -4,6 +4,6 @@ pub mod opcode;
 
 
 // evm/mod.rs
-#[cfg(test)]
-mod vm_test;
+
+pub mod vm_test;
 

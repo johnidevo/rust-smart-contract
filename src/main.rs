@@ -2,11 +2,15 @@
 mod evm;
 use evm::vm::Vm;
 use evm::opcode::Opcode;
+
+
+use evm::vm_test::Vm_test;
+
 use std::error::Error;
 //use std::env;
 use std::io;
 
-fn debug(vm: &mut Vm) {
+fn debugger(vm: &mut Vm) {
 	loop {
 		if vm.at_end {
 			break;
@@ -42,18 +46,26 @@ fn debug(vm: &mut Vm) {
 	}
 }
 */
-/*
-fn interpret(vm: &mut Vm) {
-	while !vm.at_end {
-		vm.interpret();
-	}
-	vm.print_stack();
+
+
+fn vm_test(vm: &mut Vm) {
+    while !vm.at_end {
+        vm.interpret();
+    }
+    vm.print_stack();
 }
-*/
+
+fn interpret(vm: &mut Vm) {
+    while !vm.at_end {
+        vm.interpret();
+    }
+    vm.print_stack();
+}
+
 fn run() -> Result<(), Box<dyn Error>> {
 
 	//let args: Vec<String> = env::args().collect();
-	let function = "debug"; //args[1].clone();
+	let function = "test"; //args[1].clone();
 	let filename = "./Artifacts/Addition.bin-runtime"; //args[2].clone();
 
 	println!("In file {}", filename);
@@ -62,11 +74,12 @@ fn run() -> Result<(), Box<dyn Error>> {
 	println!("Correctly loaded VM");
 
 	match &*function {
+		"debugger" => debugger(&mut vm),
 		"debug" => debug(&mut vm),
-		//"run" => interpret(&mut vm),
+		"run" => interpret(&mut vm),
+		"test" => vm_test(&mut vm),
 		_ => panic!("Expect either 'debug' or 'run' for first parameter")
 	}
-
 
 	Ok(())
 }
