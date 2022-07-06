@@ -12,7 +12,6 @@ fn debug(vm: &mut Vm) {
 			break;
 		}
 
-println!("Correctly loaded loop");
 		// Debugger.
 		// c to continue
 		// s to print stack
