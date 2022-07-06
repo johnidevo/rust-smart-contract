@@ -48,11 +48,9 @@ fn debug(vm: &mut Vm) {
 */
 
 
-fn vm_test(vm: &mut Vm) {
-    while !vm.at_end {
-        vm.interpret();
-    }
-    vm.print_stack();
+fn vm_test(vm_test: &mut Vm_test) {
+
+    vm_test.addition();
 }
 
 fn interpret(vm: &mut Vm) {
