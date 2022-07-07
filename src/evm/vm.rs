@@ -88,7 +88,7 @@ impl Vm {
 	pub fn interpret(&mut self) {
         let maybe_op = self.next();
 
-		println!("maybe_op");
+		println!(maybe_op);
         // just for debugging
         match &maybe_op {
             Some(x) => x.describe(),
