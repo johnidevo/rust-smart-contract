@@ -89,7 +89,7 @@ fn run() -> Result<(), Box<dyn Error>> {
 	println!("In file {}", filename);
 	let data = (0..32).collect();
 	let params = InputParameters::new(data);
-	let mut vm = Vm::new_from_file(&filename, InputParameters::new(data))?;
+	let mut vm = Vm::new_from_file(&filename, params)?;
 	println!("Correctly loaded VM");
 
 	match &*function {
