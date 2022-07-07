@@ -51,6 +51,8 @@ impl Vm {
 	// decoding
 	pub fn next(&mut self) -> Option<Opcode> {
 		
+		println!("{:?}", code);
+		
 		if self.pc >= self.code.len() {
 			return Some(Opcode::EOF);
 		}
@@ -88,7 +90,6 @@ impl Vm {
 	pub fn interpret(&mut self) {
         let maybe_op = self.next();
 
-		println!(maybe_op);
         // just for debugging
         match &maybe_op {
             Some(x) => x.describe(),
