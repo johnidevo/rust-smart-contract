@@ -1,3 +1,6 @@
+
+//use std::env;
+use std::io;
 use std::fs::File;
 use std::io::prelude::*;
 use std::num::ParseIntError;
@@ -7,8 +10,8 @@ use std::error::Error;
 
 use primitive_types::U256;
 
-use crate::evm::opcode::Opcode;
-use crate::evm::memory::Memory;
+mod evm {
+	pub mod vm {
 
 pub fn decode(s: &str) -> Result<Vec<u8>, ParseIntError> {
 	(0..(s.len()-1))
@@ -21,9 +24,7 @@ pub struct Vm {
 	pub code: Vec<u8>, // smart contract code
 	pub pc: usize, // current instruction
 	pub stack: Vec<U256>,
-	// detect if code ended.
 	pub at_end: bool,
-	pub mem: Memory,
 }
 
 impl Vm {
@@ -47,8 +48,7 @@ impl Vm {
 		}
 		println!("{}", buffer);
 		
-		Ok(Vm { code: code, pc: 0, stack: Vec::new(), mem: Memory::new(), at_end: false})
-		//Ok(Vm { code: code, pc: 0, stack: Vec::new(), at_end: false})
+		Ok(Vm { code: code, pc: 0, stack: Vec::new(), at_end: false})
 		//Ok(Vm { code: code, pc: 0, stack: Vec::new()})
 	}
 
@@ -186,4 +186,198 @@ impl Vm {
         println!("Stack:");
         self.print_stack();
     }
+}
+
+	}
+	
+	pub mod opcode {
+impl Opcode {
+	pub fn describe(&self) {
+		match self {
+			
+			Opcode::MLOAD(line) => println!("0x{:x}\tPRINT\t---Halts execution", line),
+			Opcode::MSTORE(line) => println!("0x{:x}\tJUMPI\t---Halts execution", line),
+			Opcode::MSTORE8(line) => println!("0x{:x}\tSLT\t---Addition operation", line),
+			
+			Opcode::PRINT(line) => println!("0x{:x}\tPRINT\t---Halts execution", line),
+			Opcode::JUMPI(line) => println!("0x{:x}\tJUMPI\t---Halts execution", line),
+			Opcode::SLT(line) => println!("0x{:x}\tSLT\t---Addition operation", line),
+			
+			Opcode::JUMP(line) => println!("0x{:x}\tJUMP\tHalts execution", line),
+			
+			Opcode::STOP(line) => println!("0x{:x}\tSTOP\tHalts execution", line),
+			Opcode::ADD(line) => println!("0x{:x}\tADD\tAddition operation", line),
+			Opcode::MUL(line) => println!("0x{:x}\tMUL\tMultiplication operation", line),
+			Opcode::PUSH1(line, x) => println!("0x{:x}\tPUSH1\tPlace 1-byte item on the stack 0x{:x}", line, x),
+			Opcode::PUSH2(line, x0, x1) => println!("0x{:x}\tPUSH2\tPlace 2-bytes item on the stack 0x{:x} 0x{:x}", line, x0, x1),
+			_ => println!("Unknown opcode")
+		}
+	}
+}
+
+#[derive(Debug)]
+pub enum Opcode {
+
+	MLOAD(usize), // 0x00
+	MSTORE(usize), // 0x01
+	MSTORE8(usize), // 0x02
+	
+	PRINT(usize), // 0x00
+	
+	JUMP(usize), // 0x01
+	JUMPI(usize), // 0x01
+	SLT(usize), // 0x02
+	
+	STOP(usize), // 0x00
+	ADD(usize), // 0x01
+	MUL(usize), // 0x02
+	
+	// Push operations
+	/*
+	PUSH1(usize, U256), // 0x60
+	PUSH2(usize, U256), // 0x61
+	PUSH32(usize, U256),
+	*/
+	
+	PUSH1(usize, u8), // 0x60
+	PUSH2(usize, u8, u8), // 0x61
+	PUSH32(usize, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8), // 0x7f 
+	// test commit mesage terminal
+	EOF,
+}
+
+	}
+	pub mod memory {
+pub struct Memory {
+    data: Vec<u8>,
+}
+
+impl Memory {
+
+    pub fn new() -> Memory {
+        Memory { data: Vec::new() }
+    }
+
+    pub fn resize(&mut self, new_size: usize) {
+        if self.data.len() < new_size {
+            self.data.resize(new_size, 0);
+        }
+    }
+
+    // We only get words from the memory
+    pub fn get_word(&self, addr: usize) -> U256 {
+        // will panic if oob
+        U256::from_big_endian(&self.data[addr..addr+32])
+    }
+
+    pub fn set_byte(&mut self, addr: usize, b: u8) {
+        self.data[addr] = b;
+    }
+
+    pub fn set_word(&mut self, addr: usize, w: U256) {
+        let mut bytes = vec![0; 32];
+        w.to_big_endian(&mut bytes);
+
+        for i in 0..bytes.len() {
+            self.data[i+addr] = bytes[i];
+        }
+    }
+}
+	}
+}
+
+
+fn debug(vm: &mut Vm) {
+	loop {
+		match vm.next() {
+			Some(Opcode::EOF) => break,
+			//Opcode::EOF => break,
+			Some(x) => x.describe(),
+			//x => x.describe(),
+			None => {}
+		}
+	}
+}
+
+
+fn create_vm(binary: Vec<u8>) -> Vm {
+    Vm { code: binary, pc: 0, stack: Vec::new(), at_end: false}
+}
+
+fn vm_test() {
+	// 1 + 5
+	let binary = vec![0x60, 0x0f, 0x60, 0x01, 0x01, 0x00];
+	let mut vm = create_vm(binary); //moved
+
+	// execute three instructions.
+	// push 0x0f
+	vm.interpret();
+	// push 0x01
+	vm.interpret();
+	// add
+	vm.interpret();
+	// halt
+	vm.interpret();
+
+	// Now make sure the stack size is 1 and contains 16.
+	assert_eq!(1, vm.stack.len());
+	assert_eq!(16, vm.stack[0].as_u32()); // this is panicking in case of overflow.
+}
+
+fn interpret() {//vm: &mut Vm) {
+	println!("Infinite loop");
+	/*
+    while !vm.at_end {
+        vm.interpret();
+    }
+    vm.print_stack();
+	*/
+}
+
+fn debugger(vm: &mut Vm) {
+	loop {
+		if vm.at_end {
+			break;
+		}
+		
+		// Debugger.
+		// c to continue
+		// s to print stack
+		// q to quit
+		let mut input = String::new();
+		io::stdin().read_line(&mut input).ok().expect("Couldn't read line");
+
+		match &*input {
+			"c\n" => vm.interpret(),
+			"s\n" => vm.print_debug(),
+			"q\n" => break,
+			_ => println!("Please type either c, s or q"), 
+		}
+	}
+}
+
+fn run() -> Result<(), Box<dyn Error>> {
+
+	//let args: Vec<String> = env::args().collect();
+	let function = "debugger"; //args[1].clone();
+	let filename = "./Artifacts/04 Example/Example.bin-runtime"; //args[2].clone();
+
+	println!("In file {}", filename);
+
+	let mut vm = Vm::new_from_file(&filename)?;
+	println!("Correctly loaded VM");
+
+	match &*function {
+		"debugger" => debugger(&mut vm),
+		"debug" => debug(&mut vm),
+		"run" => interpret(),
+		"test" => vm_test(),
+		_ => panic!("Expect either 'debug' or 'run' for first parameter")
+	}
+
+	Ok(())
+}
+
+fn main() {
+    run().unwrap();
 }

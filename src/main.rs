@@ -1,13 +1,8 @@
 
-mod evm;
+pub mod evm;
 use evm::vm::Vm;
-#[warn(unused_imports)]
 use evm::opcode::Opcode;
-
-use evm::memory::Memory as mem;
-
-//use evm::glaube::Glaube;
-//use evm::test::Test;
+use evm::memory::Memory;
 
 use std::error::Error;
 //use std::env;
@@ -25,9 +20,9 @@ fn debug(vm: &mut Vm) {
 	}
 }
 
-
 fn create_vm(binary: Vec<u8>) -> Vm {
-    Vm { code: binary, pc: 0, stack: Vec::new(), at_end: false}
+	//Vm { code: binary, pc: 0, stack: Vec::new(), at_end: false}
+	Vm { code: binary, pc: 0, stack: Vec::new(), mem: Memory::new(), at_end: false}
 }
 
 fn vm_test() {

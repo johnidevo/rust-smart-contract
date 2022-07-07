@@ -4,11 +4,11 @@
 impl Opcode {
 	pub fn describe(&self) {
 		match self {
-			/*
+			
 			Opcode::MLOAD(line) => println!("0x{:x}\tPRINT\t---Halts execution", line),
 			Opcode::MSTORE(line) => println!("0x{:x}\tJUMPI\t---Halts execution", line),
 			Opcode::MSTORE8(line) => println!("0x{:x}\tSLT\t---Addition operation", line),
-			*/
+			
 			Opcode::PRINT(line) => println!("0x{:x}\tPRINT\t---Halts execution", line),
 			Opcode::JUMPI(line) => println!("0x{:x}\tJUMPI\t---Halts execution", line),
 			Opcode::SLT(line) => println!("0x{:x}\tSLT\t---Addition operation", line),
@@ -27,13 +27,10 @@ impl Opcode {
 
 #[derive(Debug)]
 pub enum Opcode {
-/*
+
 	MLOAD(usize), // 0x00
 	MSTORE(usize), // 0x01
 	MSTORE8(usize), // 0x02
-	
-	
-*/
 	
 	PRINT(usize), // 0x00
 	
