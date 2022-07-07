@@ -5,6 +5,9 @@ impl Opcode {
 	pub fn describe(&self) {
 		match self {
 			
+			Opcode::CALLDATASIZE(line) => println!("0x{:x}\tCALLDATASIZE\t---Halts execution", line),
+			Opcode::CALLDATALOAD(line) => println!("0x{:x}\tCALLDATALOAD\t---Halts execution", line),
+			
 			Opcode::MLOAD(line) => println!("0x{:x}\tPRINT\t---Halts execution", line),
 			Opcode::MSTORE(line) => println!("0x{:x}\tJUMPI\t---Halts execution", line),
 			Opcode::MSTORE8(line) => println!("0x{:x}\tSLT\t---Addition operation", line),
@@ -28,6 +31,9 @@ impl Opcode {
 #[derive(Debug)]
 pub enum Opcode {
 
+	CALLDATASIZE(usize), // 0x00
+	CALLDATALOAD(usize), // 0x01
+	
 	MLOAD(usize), // 0x00
 	MSTORE(usize), // 0x01
 	MSTORE8(usize), // 0x02

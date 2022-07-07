@@ -38,18 +38,6 @@ impl Memory {
             self.data[i+addr] = bytes[i];
         }
     }
-	
-		pub fn get_new_size(&self, code: &Opcode) -> Option<usize> {
-        match code {
-        Opcode::MLOAD(_) | Opcode::MSTORE(_) => {
-            Some(self.stack.last().unwrap().as_u64() as usize + 32)
-        },
-        Opcode::MSTORE8(_) => {
-            Some(self.stack.last().unwrap().as_u64() as usize + 1)
-        },
-        _ => None  
-        }
-    }
 
 }
 

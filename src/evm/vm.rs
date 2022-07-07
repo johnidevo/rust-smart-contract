@@ -7,6 +7,7 @@ use std::error::Error;
 
 use primitive_types::U256;
 
+use crate::evm::params::InputParameters;
 use crate::evm::opcode::Opcode;
 use crate::evm::memory::Memory;
 
@@ -24,10 +25,13 @@ pub struct Vm {
 	// detect if code ended.
 	pub at_end: bool,
 	pub mem: Memory,
+
+	// Parameters received in the message
+	pub input_data: InputParameters,
 }
 
 impl Vm {
-	pub fn new_from_file(filename: &str) -> Result<Vm, Box<dyn Error>> {
+	pub fn new_from_file(filename: &str, input_data: InputParameters) -> Result<Vm, Box<dyn Error>> {
 		//println!("{}", Path::new("./Artifacts/evm/mod.rs").exists());
 		//println!("{}", filename);
 		let mut file = File::open(filename).expect("File not found");
@@ -47,7 +51,7 @@ impl Vm {
 		}
 		println!("{}", buffer);
 		
-		Ok(Vm { code: code, pc: 0, stack: Vec::new(), mem: Memory::new(), at_end: false})
+		Ok(Vm { code: code, pc: 0, stack: Vec::new(), mem: Memory::new(), input_data, at_end: false})
 		//Ok(Vm { code: code, pc: 0, stack: Vec::new(), at_end: false})
 		//Ok(Vm { code: code, pc: 0, stack: Vec::new()})
 	}
@@ -104,7 +108,18 @@ impl Vm {
         match &maybe_op {
             Some(x) => {
                 match x {
-									
+									Opcode::CALLDATASIZE(_) => {
+											let size = self.input_data.size();
+											self.stack.push(size);
+									},
+									Opcode::CALLDATALOAD(_) => {
+											// This is a bit dirty. As first approximation, there is not
+											// way we would have a size larger than 32 bits. Lets try it
+											// and if it fails, it will panic (which is what I want)
+											let idx = self.stack.pop().unwrap().as_u32() as usize;
+											let data = self.input_data.get(idx);
+											self.stack.push(data);
+									},
 									Opcode::MLOAD(_addr) => {
 											let offset = self.stack.pop().unwrap();
 											let loaded_value = self.mem.get_word(offset.as_u64() as usize);
@@ -168,6 +183,20 @@ impl Vm {
             None => {}
         }
     }
+	
+	
+		pub fn get_new_size(&self, code: &Opcode) -> Option<usize> {
+        match code {
+        Opcode::MLOAD(_) | Opcode::MSTORE(_) => {
+            Some(self.stack.last().unwrap().as_u64() as usize + 32)
+        },
+        Opcode::MSTORE8(_) => {
+            Some(self.stack.last().unwrap().as_u64() as usize + 1)
+        },
+        _ => None  
+        }
+    }
+	
     // see part 2 for print_stack
     pub fn print_stack(&self) {
         self.stack

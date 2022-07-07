@@ -3,6 +3,7 @@ pub mod evm;
 use evm::vm::Vm;
 use evm::opcode::Opcode;
 use evm::memory::Memory;
+use crate::evm::params::InputParameters;
 
 use std::error::Error;
 //use std::env;
@@ -22,7 +23,9 @@ fn debug(vm: &mut Vm) {
 
 fn create_vm(binary: Vec<u8>) -> Vm {
 	//Vm { code: binary, pc: 0, stack: Vec::new(), at_end: false}
-	Vm { code: binary, pc: 0, stack: Vec::new(), mem: Memory::new(), at_end: false}
+	
+	let val = Vec::new();
+	Vm { code: binary, pc: 0, stack: Vec::new(), mem: Memory::new(), input_data: InputParameters::new(val), at_end: false}
 }
 
 fn vm_test() {
@@ -84,8 +87,8 @@ fn run() -> Result<(), Box<dyn Error>> {
 	let filename = "./Artifacts/04 Example/Example.bin-runtime"; //args[2].clone();
 
 	println!("In file {}", filename);
-
-	let mut vm = Vm::new_from_file(&filename)?;
+	let val = Vec::new();
+	let mut vm = Vm::new_from_file(&filename, InputParameters{ data: Vec::new() })?;
 	println!("Correctly loaded VM");
 
 	match &*function {
