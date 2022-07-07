@@ -24,8 +24,8 @@ fn debug(vm: &mut Vm) {
 fn create_vm(binary: Vec<u8>) -> Vm {
 	//Vm { code: binary, pc: 0, stack: Vec::new(), at_end: false}
 	
-	let val = Vec::new();
-	Vm { code: binary, pc: 0, stack: Vec::new(), mem: Memory::new(), input_data: InputParameters::new(val), at_end: false}
+	let data = (0..32).collect();
+	Vm { code: binary, pc: 0, stack: Vec::new(), mem: Memory::new(), input_data: InputParameters::new(data), at_end: false}
 }
 
 fn vm_test() {
@@ -87,8 +87,9 @@ fn run() -> Result<(), Box<dyn Error>> {
 	let filename = "./Artifacts/04 Example/Example.bin-runtime"; //args[2].clone();
 
 	println!("In file {}", filename);
-	let val = Vec::new();
-	let mut vm = Vm::new_from_file(&filename, InputParameters{ data: Vec::new() })?;
+	let data = (0..32).collect();
+	let params = InputParameters::new(data);
+	let mut vm = Vm::new_from_file(&filename, InputParameters::new(data))?;
 	println!("Correctly loaded VM");
 
 	match &*function {
