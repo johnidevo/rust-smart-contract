@@ -4,6 +4,8 @@ use evm::vm::Vm;
 #[warn(unused_imports)]
 use evm::opcode::Opcode;
 
+use evm::mem::Memory;
+
 //use evm::glaube::Glaube;
 //use evm::test::Test;
 
@@ -72,18 +74,21 @@ fn vm_test() {
 	assert_eq!(16, vm.stack[0].as_u32()); // this is panicking in case of overflow.
 }
 
-fn interpret(vm: &mut Vm) {
+fn interpret() {//vm: &mut Vm) {
+	println!("Infinite loop");
+	/*
     while !vm.at_end {
         vm.interpret();
     }
     vm.print_stack();
+	*/
 }
 
 fn run() -> Result<(), Box<dyn Error>> {
 
 	//let args: Vec<String> = env::args().collect();
-	let function = "test"; //args[1].clone();
-	let filename = "./Artifacts/Addition.bin-runtime"; //args[2].clone();
+	let function = "debug"; //args[1].clone();
+	let filename = "./Artifacts/03/Ifelse.bin-runtime"; //args[2].clone();
 
 	println!("In file {}", filename);
 
@@ -93,7 +98,7 @@ fn run() -> Result<(), Box<dyn Error>> {
 	match &*function {
 		"debugger" => debugger(&mut vm),
 		"debug" => debug(&mut vm),
-		"run" => interpret(&mut vm),
+		"run" => interpret(),
 		"test" => vm_test(),
 		_ => panic!("Expect either 'debug' or 'run' for first parameter")
 	}

@@ -3,6 +3,7 @@ use std::io::prelude::*;
 use std::num::ParseIntError;
 use std::error::Error;
 //use std::path::Path;
+//std::process::exit();
 
 use primitive_types::U256;
 
@@ -51,10 +52,12 @@ impl Vm {
 
 	// decoding
 	pub fn next(&mut self) -> Option<Opcode> {
+		
 		if self.pc >= self.code.len() {
 			return Some(Opcode::EOF);
 		}
 
+	//std::process::exit(self.pc.try_into().unwrap());
 		let addr = self.pc;
 		match self.code[addr] {
 			 0x00 => {
@@ -97,20 +100,65 @@ impl Vm {
         match &maybe_op {
             Some(x) => {
                 match x {
-                Opcode::PUSH1(addr, value) => {
-                    // Value is u8, we need to push a u256 on the stack...
-                    self.stack.push(U256::from(*value));
-                },
-                Opcode::ADD(addr) => {
-                    // How to recover nicely? There is no meaning in recovering nicely here.
-                    // Just burn and crash if cannot pop.
-                    let v1 = self.stack.pop().unwrap();
-                    let v2 = self.stack.pop().unwrap();
-                    self.stack.push(v1 + v2);
-                },
-                _ => {
-                    // not implemented, just chill
-                }
+									/*
+									Opcode::MLOAD(_addr) => {
+											let offset = self.stack.pop().unwrap();
+											let loaded_value = self.mem.get_word(offset.as_u64() as usize);
+											self.stack.push(loaded_value);
+									},
+									Opcode::MSTORE(_addr) => {
+											let offset = self.stack.pop().unwrap();
+											let w = self.stack.pop().unwrap();
+											self.mem.set_word(offset.as_u64() as usize, w);
+									},
+									Opcode::MSTORE8(_addr) => {
+											// stored as big endian so we get the last byte
+											let offset = self.stack.pop().unwrap();
+											let b = self.stack.pop().unwrap().byte(31);
+											self.mem.set_byte(offset.as_u64() as usize, b);
+									},
+									*/
+									Opcode::JUMP(_addr) => {
+											let jump_location = self.stack.pop().unwrap();
+											self.pc = jump_location.as_u64() as usize;
+									},
+									Opcode::SLT(_addr) => {
+											let lhs = self.stack.pop().unwrap();
+											let rhs = self.stack.pop().unwrap();
+											if lhs < rhs {
+													self.stack.push(U256::from(0x01));
+											} else {
+													self.stack.push(U256::from(0x00));
+											}
+									},
+									Opcode::JUMPI(_addr) => {
+											let then_addr = self.stack.pop().unwrap();
+											let cond = self.stack.pop().unwrap();
+											if !cond.is_zero() {
+													self.pc = then_addr.as_u64() as usize;
+											} // else continue to next :)
+									}
+									Opcode::PRINT(_addr) => {
+											// TODO this should be removed in release mode..
+											let v = self.stack.pop().unwrap();
+											let mut bytes = vec![0;32];
+											v.to_big_endian(&mut bytes);
+											println!("PRINT\t{:?}|", bytes)
+									},
+									Opcode::PUSH1(addr, value) => {
+											// Value is u8, we need to push a u256 on the stack...
+											self.stack.push(U256::from(*value));
+									},
+									Opcode::ADD(addr) => {
+											// How to recover nicely? There is no meaning in recovering nicely here.
+											// Just burn and crash if cannot pop.
+											let v1 = self.stack.pop().unwrap();
+											let v2 = self.stack.pop().unwrap();
+											self.stack.push(v1 + v2);
+									},
+									_ => {
+											// not implemented, just chill
+									}
                 }
             },
             None => {}

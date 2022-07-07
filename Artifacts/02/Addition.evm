@@ -1,0 +1,187 @@
+    /* "Contracts/Addition.sol":65:194  contract Addition{... */
+  mstore(0x40, 0x80)
+  callvalue
+  dup1
+  iszero
+  tag_1
+  jumpi
+  0x00
+  dup1
+  revert
+tag_1:
+  pop
+  dataSize(sub_0)
+  dup1
+  dataOffset(sub_0)
+  0x00
+  codecopy
+  0x00
+  return
+stop
+
+sub_0: assembly {
+        /* "Contracts/Addition.sol":65:194  contract Addition{... */
+      mstore(0x40, 0x80)
+      callvalue
+      dup1
+      iszero
+      tag_1
+      jumpi
+      0x00
+      dup1
+      revert
+    tag_1:
+      pop
+      jumpi(tag_2, lt(calldatasize, 0x04))
+      shr(0xe0, calldataload(0x00))
+      dup1
+      0x0c55699c
+      eq
+      tag_3
+      jumpi
+      dup1
+      0x4f2be91f
+      eq
+      tag_4
+      jumpi
+    tag_2:
+      0x00
+      dup1
+      revert
+        /* "Contracts/Addition.sol":86:98  int public x */
+    tag_3:
+      tag_5
+      sload(0x00)
+      dup2
+      jump
+    tag_5:
+      mload(0x40)
+        /* "#utility.yul":158:183   */
+      swap1
+      dup2
+      mstore
+        /* "#utility.yul":146:148   */
+      0x20
+        /* "#utility.yul":131:149   */
+      add
+        /* "Contracts/Addition.sol":86:98  int public x */
+      mload(0x40)
+      dup1
+      swap2
+      sub
+      swap1
+      return
+        /* "Contracts/Addition.sol":109:192  function add() public {... */
+    tag_4:
+      tag_9
+      tag_10
+      jump	// in
+    tag_9:
+      stop
+    tag_10:
+        /* "Contracts/Addition.sol":149:150  5 */
+      0x05
+        /* "Contracts/Addition.sol":168:169  6 */
+      0x06
+        /* "Contracts/Addition.sol":180:185  a + b */
+      tag_12
+        /* "Contracts/Addition.sol":168:169  6 */
+      dup2
+        /* "Contracts/Addition.sol":149:150  5 */
+      dup4
+        /* "Contracts/Addition.sol":180:185  a + b */
+      tag_13
+      jump	// in
+    tag_12:
+        /* "Contracts/Addition.sol":176:177  x */
+      0x00
+        /* "Contracts/Addition.sol":176:185  x = a + b */
+      sstore
+      pop
+      pop
+        /* "Contracts/Addition.sol":109:192  function add() public {... */
+      jump	// out
+        /* "#utility.yul":194:321   */
+    tag_14:
+        /* "#utility.yul":255:265   */
+      0x4e487b71
+        /* "#utility.yul":250:253   */
+      0xe0
+        /* "#utility.yul":246:266   */
+      shl
+        /* "#utility.yul":243:244   */
+      0x00
+        /* "#utility.yul":236:267   */
+      mstore
+        /* "#utility.yul":286:290   */
+      0x11
+        /* "#utility.yul":283:284   */
+      0x04
+        /* "#utility.yul":276:291   */
+      mstore
+        /* "#utility.yul":310:314   */
+      0x24
+        /* "#utility.yul":307:308   */
+      0x00
+        /* "#utility.yul":300:315   */
+      revert
+        /* "#utility.yul":326:591   */
+    tag_13:
+        /* "#utility.yul":365:368   */
+      0x00
+        /* "#utility.yul":393:402   */
+      dup1
+      dup3
+      slt
+        /* "#utility.yul":418:428   */
+      dup1
+      iszero
+      sub(shl(0xff, 0x01), 0x01)
+        /* "#utility.yul":437:464   */
+      dup5
+      swap1
+      sub
+        /* "#utility.yul":430:465   */
+      dup6
+      sgt
+        /* "#utility.yul":414:466   */
+      and
+        /* "#utility.yul":411:489   */
+      iszero
+      tag_20
+      jumpi
+        /* "#utility.yul":469:487   */
+      tag_20
+      tag_14
+      jump	// in
+    tag_20:
+      shl(0xff, 0x01)
+        /* "#utility.yul":516:535   */
+      dup4
+      swap1
+      sub
+        /* "#utility.yul":509:536   */
+      dup5
+      slt
+        /* "#utility.yul":501:537   */
+      dup2
+      and
+        /* "#utility.yul":498:560   */
+      iszero
+      tag_22
+      jumpi
+        /* "#utility.yul":540:558   */
+      tag_22
+      tag_14
+      jump	// in
+    tag_22:
+      pop
+      pop
+        /* "#utility.yul":576:585   */
+      add
+      swap1
+        /* "#utility.yul":326:591   */
+      jump	// out
+
+    auxdata: 0xa26469706673582212200163a3469b4c776a6974634cf23a94ac3d40508f297d3bd62b5dd03e398ff6ad64736f6c634300080f0033
+}
