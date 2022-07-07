@@ -65,7 +65,6 @@ fn debugger(vm: &mut Vm) {
 		if vm.at_end {
 			break;
 		}
-		println!("debugger");
 		
 		// Debugger.
 		// c to continue
