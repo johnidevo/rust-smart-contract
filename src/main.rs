@@ -13,30 +13,6 @@ use std::error::Error;
 //use std::env;
 use std::io;
 
-fn debugger(vm: &mut Vm) {
-	loop {
-		if vm.at_end {
-			break;
-		}
-
-		// Debugger.
-		// c to continue
-		// s to print stack
-		// q to quit
-		let mut input = String::new();
-		io::stdin().read_line(&mut input).ok().expect("Couldn't read line");
-
-		match &*input {
-			"c\n" => vm.interpret(),
-			"s\n" => vm.print_debug(),
-			"q\n" => break,
-			_ => println!("Please type either c, s or q"), 
-		}
-	}
-
-}
-
-
 fn debug(vm: &mut Vm) {
 	loop {
 		match vm.next() {
@@ -84,11 +60,33 @@ fn interpret() {//vm: &mut Vm) {
 	*/
 }
 
+fn debugger(vm: &mut Vm) {
+	loop {
+		if vm.at_end {
+			break;
+		}
+		println!("debugger");
+		// Debugger.
+		// c to continue
+		// s to print stack
+		// q to quit
+		let mut input = String::new();
+		io::stdin().read_line(&mut input).ok().expect("Couldn't read line");
+
+		match &*input {
+			"c\n" => vm.interpret(),
+			"s\n" => vm.print_debug(),
+			"q\n" => break,
+			_ => println!("Please type either c, s or q"), 
+		}
+	}
+}
+
 fn run() -> Result<(), Box<dyn Error>> {
 
 	//let args: Vec<String> = env::args().collect();
-	let function = "debug"; //args[1].clone();
-	let filename = "./Artifacts/03/Ifelse.bin-runtime"; //args[2].clone();
+	let function = "debugger"; //args[1].clone();
+	let filename = "./Artifacts/04 Example/Example.bin-runtime"; //args[2].clone();
 
 	println!("In file {}", filename);
 
