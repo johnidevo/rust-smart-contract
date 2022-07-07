@@ -66,6 +66,7 @@ fn debugger(vm: &mut Vm) {
 			break;
 		}
 		println!("debugger");
+		
 		// Debugger.
 		// c to continue
 		// s to print stack
