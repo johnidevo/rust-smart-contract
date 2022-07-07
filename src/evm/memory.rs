@@ -1,6 +1,5 @@
-extern crate uint;
+use primitive_types::U256;
 
-use self::uint::U256;
 
 pub struct Memory {
     data: Vec<u8>,

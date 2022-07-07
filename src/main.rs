@@ -4,7 +4,7 @@ use evm::vm::Vm;
 #[warn(unused_imports)]
 use evm::opcode::Opcode;
 
-use evm::mem::Memory;
+use evm::memory::Memory as mem;
 
 //use evm::glaube::Glaube;
 //use evm::test::Test;
