@@ -305,8 +305,9 @@ impl Vm {
 						println!("PRINT\t{:?}|", bytes)
 					},
 					Opcode::PUSH1(addr, value) => {
+					//Opcode::PUSH1(addr, value) => {
 						// Value is u8, we need to push a u256 on the stack...
-						self.stack.push(U256::from(*value));
+						self.stack.push(value);
 					},
 					Opcode::ADD(addr) => {
 						// How to recover nicely? There is no meaning in recovering nicely here.
