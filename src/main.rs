@@ -101,7 +101,7 @@ fn debugger(vm: &mut Vm) {
 fn run() -> Result<(), Box<dyn Error>> {
 
 	//let args: Vec<String> = env::args().collect();
-	let function = "run"; //args[1].clone();
+	let function = "debug"; //args[1].clone();
 	let filename = "./Artifacts/02/Addition.bin-runtime"; //args[2].clone();
 
 	println!("In file {}", filename);
