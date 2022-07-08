@@ -3,7 +3,7 @@ pub mod evm;
 use evm::vm::Vm;
 use evm::opcode::Opcode;
 use evm::memory::Memory;
-use crate::evm::params::InputParameters;
+use evm::params::InputParameters;
 
 use std::error::Error;
 //use std::env;
