@@ -1,9 +1,10 @@
 
 pub mod evm;
+pub mod params;
 use evm::vm::Vm;
 use evm::opcode::Opcode;
 use evm::memory::Memory;
-use evm::params::InputParameters;
+use params::params::InputParameters;
 
 use std::error::Error;
 //use std::env;

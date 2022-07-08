@@ -7,9 +7,10 @@ use std::error::Error;
 
 use primitive_types::U256;
 
-use crate::evm::params::InputParameters;
+use crate::params::params::InputParameters;
 use crate::evm::opcode::Opcode;
 use crate::evm::memory::Memory;
+
 
 pub fn decode(s: &str) -> Result<Vec<u8>, ParseIntError> {
 	(0..(s.len()-1))
