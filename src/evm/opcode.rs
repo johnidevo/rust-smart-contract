@@ -164,7 +164,142 @@ Opcode::SELFDESTRUCT(line) => println!("0x{:x}\tSELFDESTRUCT\t---Halt execution 
 
 #[derive(Debug)]
 pub enum Opcode {
-
+	STOP(usize), // 0x00
+	ADD(usize), // 0x01
+	MUL(usize), // 0x02
+	SUB(usize), // 0x03
+	DIV(usize), // 0x04
+	SDIV(usize), // 0x05
+	MOD(usize), // 0x06
+	SMOD(usize), // 0x07
+	ADDMOD(usize), // 0x08
+	MULMOD(usize), // 0x09
+	EXP(usize), // 0x0a
+	SIGNEXTEND(usize), // 0x0b
+	LT(usize), // 0x10
+	GT(usize), // 0x11
+	SLT(usize), // 0x12
+	SGT(usize), // 0x13
+	EQ(usize), // 0x14
+	ISZERO(usize), // 0x15
+	AND(usize), // 0x16
+	OR(usize), // 0x17
+	XOR(usize), // 0x18
+	NOT(usize), // 0x19
+	BYTE(usize), // 0x1a
+	SHA3(usize), // 0x20
+	ADDRESS(usize), // 0x30
+	BALANCE(usize), // 0x31
+	ORIGIN(usize), // 0x32
+	CALLER(usize), // 0x33
+	CALLVALUE(usize), // 0x34
+	CALLDATALOAD(usize), // 0x35
+	CALLDATASIZE(usize), // 0x36
+	CALLDATACOPY(usize), // 0x37
+	CODESIZE(usize), // 0x38
+	CODECOPY(usize), // 0x39
+	GASPRICE(usize), // 0x3a
+	EXTCODESIZE(usize), // 0x3b
+	EXTCODECOPY(usize), // 0x3c
+	BLOCKHASH(usize), // 0x40
+	COINBASE(usize), // 0x41
+	TIMESTAMP(usize), // 0x42
+	NUMBER(usize), // 0x43
+	DIFFICULTY(usize), // 0x44
+	GASLIMIT(usize), // 0x45
+	POP(usize), // 0x50
+	MLOAD(usize), // 0x51
+	MSTORE(usize), // 0x52
+	MSTORE8(usize), // 0x53
+	SLOAD(usize), // 0x54
+	SSTORE(usize), // 0x55
+	JUMP(usize), // 0x56
+	JUMPI(usize), // 0x57
+	PC(usize), // 0x58
+	MSIZE(usize), // 0x59
+	GAS(usize), // 0x5a
+	JUMPDEST(usize), // 0x5b
+	PUSH1(usize), // 0x60
+	PUSH2(usize), // 0x61
+	PUSH3(usize), // 0x62
+	PUSH4(usize), // 0x63
+	PUSH5(usize), // 0x64
+	PUSH6(usize), // 0x65
+	PUSH7(usize), // 0x66
+	PUSH8(usize), // 0x67
+	PUSH9(usize), // 0x68
+	PUSH10(usize), // 0x69
+	PUSH11(usize), // 0x6a
+	PUSH12(usize), // 0x6b
+	PUSH13(usize), // 0x6c
+	PUSH14(usize), // 0x6d
+	PUSH15(usize), // 0x6e
+	PUSH16(usize), // 0x6f
+	PUSH17(usize), // 0x70
+	PUSH18(usize), // 0x71
+	PUSH19(usize), // 0x72
+	PUSH20(usize), // 0x73
+	PUSH21(usize), // 0x74
+	PUSH22(usize), // 0x75
+	PUSH23(usize), // 0x76
+	PUSH24(usize), // 0x77
+	PUSH25(usize), // 0x78
+	PUSH26(usize), // 0x79
+	PUSH27(usize), // 0x7a
+	PUSH28(usize), // 0x7b
+	PUSH29(usize), // 0x7c
+	PUSH30(usize), // 0x7d
+	PUSH31(usize), // 0x7e
+	PUSH32(usize), // 0x7f
+	DUP1(usize), // 0x80
+	DUP2(usize), // 0x81
+	DUP3(usize), // 0x82
+	DUP4(usize), // 0x83
+	DUP5(usize), // 0x84
+	DUP6(usize), // 0x85
+	DUP7(usize), // 0x86
+	DUP8(usize), // 0x87
+	DUP9(usize), // 0x88
+	DUP10(usize), // 0x89
+	DUP11(usize), // 0x8a
+	DUP12(usize), // 0x8b
+	DUP13(usize), // 0x8c
+	DUP14(usize), // 0x8d
+	DUP15(usize), // 0x8e
+	DUP16(usize), // 0x8f
+	SWAP1(usize), // 0x90
+	SWAP2(usize), // 0x91
+	SWAP3(usize), // 0x92
+	SWAP4(usize), // 0x93
+	SWAP5(usize), // 0x94
+	SWAP6(usize), // 0x95
+	SWAP7(usize), // 0x96
+	SWAP8(usize), // 0x97
+	SWAP9(usize), // 0x98
+	SWAP10(usize), // 0x99
+	SWAP11(usize), // 0x9a
+	SWAP12(usize), // 0x9b
+	SWAP13(usize), // 0x9c
+	SWAP14(usize), // 0x9d
+	SWAP15(usize), // 0x9e
+	SWAP16(usize), // 0x9f
+	LOG0(usize), // 0xa0
+	LOG1(usize), // 0xa1
+	LOG2(usize), // 0xa2
+	LOG3(usize), // 0xa3
+	LOG4(usize), // 0xa4
+	CREATE(usize), // 0xf0
+	CALL(usize), // 0xf1
+	CALLCODE(usize), // 0xf2
+	RETURN(usize), // 0xf3
+	DELEGATECALL(usize), // 0xf4
+	INVALID(usize), //0xfe
+	SELFDESTRUCT(usize), // 0xff
+	
+	
+	PRINT(usize), // 0x00
+	
+/*
 	CALLDATASIZE(usize), // 0x00
 	CALLDATALOAD(usize), // 0x01
 	
@@ -183,15 +318,14 @@ pub enum Opcode {
 	MUL(usize), // 0x02
 	
 	// Push operations
-	/*
 	PUSH1(usize, U256), // 0x60
 	PUSH2(usize, U256), // 0x61
 	PUSH32(usize, U256),
-	*/
 	
 	PUSH1(usize, u8), // 0x60
 	PUSH2(usize, u8, u8), // 0x61
 	PUSH32(usize, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8), // 0x7f 
+*/
 	// test commit mesage terminal
 	EOF,
 }
