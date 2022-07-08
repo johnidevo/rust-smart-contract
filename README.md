@@ -136,18 +136,17 @@ After the stack, the memory
 (Part 4) by snoozetime (2018)
 
 Solidity code
-* contract Example {
-*     struct Position {
-*         address owner;
-*         uint id;
-*     }
-*     
-*     uint x; 
-*     function takeOver() public {
-*         Position memory p = Position(msg.sender, 0);
-*         x = p.id;
-*     }
-* }
+	* contract Example {
+	*     struct Position {
+	*         address owner;
+	*         uint id;
+	*     }
+	*     uint x; 
+	*     function takeOver() public {
+	*         Position memory p = Position(msg.sender, 0);
+	*         x = p.id;
+	*     }
+	* }
 * Again a useless contract.
 * I just want to exhibit the use of the memory without involving the storage too much
 * What I want to understand here is:
