@@ -50,16 +50,44 @@ fn vm_test() {
 }
 
 fn interpret(vm: &mut Vm) {
+	
+let mut last = 0;
+for x in 1..vm.code.len() {
+	
+		//println!("x:{}", x);
+	
+    if last > vm.code.len() {
+        break;
+    }
+	
+		vm.interpret();
+		//vm.print_debug();
+	
+    last = x;
+}
+	
+	println!("last:{}", last);
+	println!("pc:{}", vm.pc);
+	println!("code.len:{}\n", vm.code.len());
+	vm.print_debug();
+/*
 	loop {
+
+		if vm.pc >= vm.code.len() {
+			break;
+		}
+		vm.interpret();
+		
+		vm.print_debug();
+	}
+	vm.print_debug();
+*/
+	/*
 		if vm.at_end {
 			break;
 		}
 
-		vm.interpret();
-	}
-	vm.print_debug();
-	
-	/*
+				
     while !vm.at_end {
         vm.interpret();
     }
@@ -83,6 +111,7 @@ fn debug(vm: &mut Vm) {
 
 fn debugger(vm: &mut Vm) {
 	loop {
+		
 		if vm.at_end {
 			break;
 		}
@@ -106,7 +135,7 @@ fn debugger(vm: &mut Vm) {
 fn run() -> Result<(), Box<dyn Error>> {
 
 	//let args: Vec<String> = env::args().collect();
-	let function = "test"; //args[1].clone();
+	let function = "run"; //args[1].clone();
 	let filename = "./Artifacts/04/Example.bin-runtime"; //args[2].clone();
 
 	println!("In file {}", filename);

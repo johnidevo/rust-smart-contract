@@ -334,12 +334,13 @@ impl Vm {
 						let data = self.input_data.get(idx);
 						self.stack.push(data);
 					},
+					/*
 					Opcode::MLOAD(_addr) => {
 						let offset = self.stack.pop().unwrap();
 						let loaded_value = self.mem.get_word(offset.as_u64() as usize);
 						self.stack.push(loaded_value);
 					},
-					/*
+					
 					Opcode::MSTORE(_addr) => {
 						let offset = self.stack.pop().unwrap();
 						let w = self.stack.pop().unwrap();
