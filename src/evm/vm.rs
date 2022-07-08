@@ -130,15 +130,87 @@ impl Vm {
 			0x59 => { self.pc += 1; Some(Opcode::MSIZE(addr)) }, /*_jj32_2_jjjj33_Get the size of active memory in bytes*/
 			0x5a => { self.pc += 1; Some(Opcode::GAS(addr)) }, /*_jj32_2_jjjj33_Get the amount of available gas, including the corresponding reduction for the cost of this instruction*/
 			0x5b => { self.pc += 1; Some(Opcode::JUMPDEST(addr)) }, /*_jj32_1_jjjj33_Mark a valid destination for jumps*/
-			0x60 => { self.pc += 1; Some(Opcode::PUSH1(addr, value)) }, /*_jj32_3_jjjj33_Place 1 byte item on stack*/
-			0x61 => { self.pc += 1; Some(Opcode::PUSH2(addr, value0, value1)) }, /*_jj32_3_jjjj33_Place 2 byte item on stack*/
-			0x62 => { self.pc += 1; Some(Opcode::PUSH3(addr, value0, value1, value2)) }, /*_jj32_3_jjjj33_Place 3 byte item on stack*/
-			0x63 => { self.pc += 1; Some(Opcode::PUSH4(addr, value0, value1, value2, value3)) }, /*_jj32_3_jjjj33_Place 4 byte item on stack*/
-			0x64 => { self.pc += 1; Some(Opcode::PUSH5(addr, value0, value1, value2, value3, value4)) }, /*_jj32_3_jjjj33_Place 5 byte item on stack*/
-			0x65 => { self.pc += 1; Some(Opcode::PUSH6(addr, value0, value1, value2, value3, value4, value5)) }, /*_jj32_3_jjjj33_Place 6 byte item on stack*/
-			0x66 => { self.pc += 1; Some(Opcode::PUSH7(addr, value0, value1, value2, value3, value4, value5, value6)) }, /*_jj32_3_jjjj33_Place 7 byte item on stack*/
-			0x67 => { self.pc += 1; Some(Opcode::PUSH8(addr, value0, value1, value2, value3, value4, value5, value6, value7)) }, /*_jj32_3_jjjj33_Place 8 byte item on stack*/
-			0x68 => { self.pc += 1; Some(Opcode::PUSH9(addr, value0, value1, value2, value3, value4, value5, value6, value7, value8)) }, /*_jj32_3_jjjj33_Place 9 byte item on stack*/
+			0x60 => { 
+				let value = self.code[self.pc+1];
+				self.pc += 2;
+				Some(Opcode::PUSH1(addr, value)) 
+			}, /*_jj32_3_jjjj33_Place 1 byte item on stack*/
+			0x61 => { 
+				let value0 = self.code[self.pc+1];
+				let value1 = self.code[self.pc+2];
+				self.pc += 3;
+				Some(Opcode::PUSH2(addr, value0, value1)) 
+			}, /*_jj32_3_jjjj33_Place 2 byte item on stack*/
+			0x62 => { 
+				let value0 = self.code[self.pc+1];
+				let value1 = self.code[self.pc+2];
+				let value2 = self.code[self.pc+3];
+				self.pc += 4;
+				Some(Opcode::PUSH3(addr, value0, value1, value2)) 
+			}, /*_jj32_3_jjjj33_Place 3 byte item on stack*/
+			0x63 => { 
+				let value0 = self.code[self.pc+1];
+				let value1 = self.code[self.pc+2];
+				let value2 = self.code[self.pc+3];
+				let value3 = self.code[self.pc+4];
+				self.pc += 5;
+				Some(Opcode::PUSH4(addr, value0, value1, value2, value3)) 
+			}, /*_jj32_3_jjjj33_Place 4 byte item on stack*/
+			0x64 => { 				
+				let value0 = self.code[self.pc+1];
+				let value1 = self.code[self.pc+2];
+				let value2 = self.code[self.pc+3];
+				let value3 = self.code[self.pc+4];
+				let value4 = self.code[self.pc+5];
+				self.pc += 6;
+				Some(Opcode::PUSH5(addr, value0, value1, value2, value3, value4)) 
+			}, /*_jj32_3_jjjj33_Place 5 byte item on stack*/
+			0x65 => { 
+				let value0 = self.code[self.pc+1];
+				let value1 = self.code[self.pc+2];
+				let value2 = self.code[self.pc+3];
+				let value3 = self.code[self.pc+4];
+				let value4 = self.code[self.pc+5];
+				let value5 = self.code[self.pc+6];
+				self.pc += 7;
+				Some(Opcode::PUSH6(addr, value0, value1, value2, value3, value4, value5)) 
+			}, /*_jj32_3_jjjj33_Place 6 byte item on stack*/
+			0x66 => { 
+				let value0 = self.code[self.pc+1];
+				let value1 = self.code[self.pc+2];
+				let value2 = self.code[self.pc+3];
+				let value3 = self.code[self.pc+4];
+				let value4 = self.code[self.pc+5];
+				let value5 = self.code[self.pc+6];
+				let value6 = self.code[self.pc+7];
+				self.pc += 8;
+				Some(Opcode::PUSH7(addr, value0, value1, value2, value3, value4, value5, value6)) 
+			}, /*_jj32_3_jjjj33_Place 7 byte item on stack*/
+			0x67 => { 
+				let value0 = self.code[self.pc+1];
+				let value1 = self.code[self.pc+2];
+				let value2 = self.code[self.pc+3];
+				let value3 = self.code[self.pc+4];
+				let value4 = self.code[self.pc+5];
+				let value5 = self.code[self.pc+6];
+				let value6 = self.code[self.pc+7];
+				let value7 = self.code[self.pc+8];
+				self.pc += 9;
+				Some(Opcode::PUSH8(addr, value0, value1, value2, value3, value4, value5, value6, value7)) 
+			}, /*_jj32_3_jjjj33_Place 8 byte item on stack*/
+			0x68 => { 
+				let value0 = self.code[self.pc+1];
+				let value1 = self.code[self.pc+2];
+				let value2 = self.code[self.pc+3];
+				let value3 = self.code[self.pc+4];
+				let value4 = self.code[self.pc+5];
+				let value5 = self.code[self.pc+6];
+				let value6 = self.code[self.pc+7];
+				let value7 = self.code[self.pc+8];
+				let value8 = self.code[self.pc+9];
+				self.pc += 10;
+				Some(Opcode::PUSH9(addr, value0, value1, value2, value3, value4, value5, value6, value7, value8)) 
+			}, /*_jj32_3_jjjj33_Place 9 byte item on stack*/
 			0x69 => { self.pc += 1; Some(Opcode::PUSH10(addr)) }, /*_jj32_3_jjjj33_Place 10 byte item on stack*/
 			0x6a => { self.pc += 1; Some(Opcode::PUSH11(addr)) }, /*_jj32_3_jjjj33_Place 11 byte item on stack*/
 			0x6b => { self.pc += 1; Some(Opcode::PUSH12(addr)) }, /*_jj32_3_jjjj33_Place 12 byte item on stack*/
@@ -305,7 +377,6 @@ impl Vm {
 						println!("PRINT\t{:?}|", bytes)
 					},
 					Opcode::PUSH1(addr, value) => {
-					//Opcode::PUSH1(addr, value) => {
 						// Value is u8, we need to push a u256 on the stack...
 						self.stack.push(value);
 					},
