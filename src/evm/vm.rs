@@ -338,7 +338,7 @@ impl Vm {
 						let loaded_value = self.mem.get_word(offset.as_u64() as usize);
 						self.stack.push(loaded_value);
 					},
-					Opcode::MSTORE(addr) => {
+					Opcode::MSTORE(_addr) => {
 						let offset = self.stack.pop().unwrap();
 						let w = self.stack.pop().unwrap();
 						self.mem.set_word(offset.as_u64() as usize, w);
@@ -376,12 +376,12 @@ impl Vm {
 						v.to_big_endian(&mut bytes);
 						println!("PRINT\t{:?}|", bytes)
 					},
-					Opcode::PUSH1(addr, value) => {
+					Opcode::PUSH1(_addr, value) => {
 						// Value is u8, we need to push a u256 on the stack...
 						//self.stack.push(value);
 						self.stack.push(U256::from(*value));
 					},
-					Opcode::ADD(addr) => {
+					Opcode::ADD(_addr) => {
 						// How to recover nicely? There is no meaning in recovering nicely here.
 						// Just burn and crash if cannot pop.
 						let v1 = self.stack.pop().unwrap();
