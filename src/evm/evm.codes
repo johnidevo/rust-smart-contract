@@ -1,131 +1,131 @@
-00_jj11_STOP_jj32_0_jjjj33_Halts execution
-01_jj11_ADD_jj32_3_jjjj33_Addition operation
-02_jj11_MUL_jj32_5_jjjj33_Multiplication operation
-03_jj11_SUB_jj32_3_jjjj33_Subtraction operation
-04_jj11_DIV_jj32_5_jjjj33_Integer division operation
-05_jj11_SDIV_jj32_5_jjjj33_Signed integer division operation (truncated)
-06_jj11_MOD_jj32_5_jjjj33_Modulo remainder operation
-07_jj11_SMOD_jj32_5_jjjj33_Signed modulo remainder operation
-08_jj11_ADDMOD_jj32_8_jjjj33_Modulo addition operation
-09_jj11_MULMOD_jj32_8_jjjj33_Modulo multiplication operation
-0a_jj11_EXP_jj32_10_jjjj33_Exponential operation
-0b_jj11_SIGNEXTEND_jj32_5_jjjj33_Extend length of two’s complement signed integer
-10_jj11_LT_jj32_3_jjjj33_Less-than comparison
-11_jj11_GT_jj32_3_jjjj33_Greater-than comparison
-12_jj11_SLT_jj32_3_jjjj33_Signed less-than comparison
-13_jj11_SGT_jj32_3_jjjj33_Signed greater-than comparison
-14_jj11_EQ_jj32_3_jjjj33_Equality comparison
-15_jj11_ISZERO_jj32_3_jjjj33_Simple not operator
-16_jj11_AND_jj32_3_jjjj33_Bitwise AND operation
-17_jj11_OR_jj32_3_jjjj33_Bitwise OR operation
-18_jj11_XOR_jj32_3_jjjj33_Bitwise XOR operation
-19_jj11_NOT_jj32_3_jjjj33_Bitwise NOT operation
-1a_jj11_BYTE_jj32_3_jjjj33_Retrieve single byte from word
-20_jj11_SHA3_jj32_30_jjjj33_Compute Keccak-256 hash
-30_jj11_ADDRESS_jj32_2_jjjj33_Get address of currently executing account
-31_jj11_BALANCE_jj32_20_jjjj33_Get balance of the given account
-32_jj11_ORIGIN_jj32_2_jjjj33_Get execution origination address
-33_jj11_CALLER_jj32_2_jjjj33_Get caller address
-34_jj11_CALLVALUE_jj32_2_jjjj33_Get deposited value by the instruction/transaction responsible for this execution
-35_jj11_CALLDATALOAD_jj32_3_jjjj33_Get input data of current environment
-36_jj11_CALLDATASIZE_jj32_2_jjjj33_Get size of input data in current environment
-37_jj11_CALLDATACOPY_jj32_3_jjjj33_Copy input data in current environment to memory
-38_jj11_CODESIZE_jj32_2_jjjj33_Get size of code running in current environment
-39_jj11_CODECOPY_jj32_3_jjjj33_Copy code running in current environment to memory
-3a_jj11_GASPRICE_jj32_2_jjjj33_Get price of gas in current environment
-3b_jj11_EXTCODESIZE_jj32_20_jjjj33_Get size of an account’s code
-3c_jj11_EXTCODECOPY_jj32_20_jjjj33_Copy an account’s code to memory
-40_jj11_BLOCKHASH_jj32_20_jjjj33_Get the hash of one of the 256 most recent complete blocks
-41_jj11_COINBASE_jj32_2_jjjj33_Get the block’s beneficiary address
-42_jj11_TIMESTAMP_jj32_2_jjjj33_Get the block’s timestamp
-43_jj11_NUMBER_jj32_2_jjjj33_Get the block’s number
-44_jj11_DIFFICULTY_jj32_2_jjjj33_Get the block’s difficulty
-45_jj11_GASLIMIT_jj32_2_jjjj33_Get the block’s gas limit
-50_jj11_POP_jj32_2_jjjj33_Remove item from stack
-51_jj11_MLOAD_jj32_3_jjjj33_Load word from memory
-52_jj11_MSTORE_jj32_3_jjjj33_Save word to memory
-53_jj11_MSTORE8_jj32_3_jjjj33_Save byte to memory
-54_jj11_SLOAD_jj32_50_jjjj33_Load word from storage
-55_jj11_SSTORE_jj32_5000_jjjj33_Save word to storage
-56_jj11_JUMP_jj32_8_jjjj33_Alter the program counter
-57_jj11_JUMPI_jj32_10_jjjj33_Conditionally alter the program counter
-58_jj11_PC_jj32_2_jjjj33_Get the value of the program counter prior to the increment corresponding to this instruction
-59_jj11_MSIZE_jj32_2_jjjj33_Get the size of active memory in bytes
-5a_jj11_GAS_jj32_2_jjjj33_Get the amount of available gas, including the corresponding reduction for the cost of this instruction
-5b_jj11_JUMPDEST_jj32_1_jjjj33_Mark a valid destination for jumps
-60_jj11_PUSH1_jj32_3_jjjj33_Place 1 byte item on stack
-61_jj11_PUSH2_jj32_3_jjjj33_Place 2 byte item on stack
-62_jj11_PUSH3_jj32_3_jjjj33_Place 3 byte item on stack
-63_jj11_PUSH4_jj32_3_jjjj33_Place 4 byte item on stack
-64_jj11_PUSH5_jj32_3_jjjj33_Place 5 byte item on stack
-65_jj11_PUSH6_jj32_3_jjjj33_Place 6 byte item on stack
-66_jj11_PUSH7_jj32_3_jjjj33_Place 7 byte item on stack
-67_jj11_PUSH8_jj32_3_jjjj33_Place 8 byte item on stack
-68_jj11_PUSH9_jj32_3_jjjj33_Place 9 byte item on stack
-69_jj11_PUSH10_jj32_3_jjjj33_Place 10 byte item on stack
-6a_jj11_PUSH11_jj32_3_jjjj33_Place 11 byte item on stack
-6b_jj11_PUSH12_jj32_3_jjjj33_Place 12 byte item on stack
-6c_jj11_PUSH13_jj32_3_jjjj33_Place 13 byte item on stack
-6d_jj11_PUSH14_jj32_3_jjjj33_Place 14 byte item on stack
-6e_jj11_PUSH15_jj32_3_jjjj33_Place 15 byte item on stack
-6f_jj11_PUSH16_jj32_3_jjjj33_Place 16 byte item on stack
-70_jj11_PUSH17_jj32_3_jjjj33_Place 17 byte item on stack
-71_jj11_PUSH18_jj32_3_jjjj33_Place 18 byte item on stack
-72_jj11_PUSH19_jj32_3_jjjj33_Place 19 byte item on stack
-73_jj11_PUSH20_jj32_3_jjjj33_Place 20 byte item on stack
-74_jj11_PUSH21_jj32_3_jjjj33_Place 21 byte item on stack
-75_jj11_PUSH22_jj32_3_jjjj33_Place 22 byte item on stack
-76_jj11_PUSH23_jj32_3_jjjj33_Place 23 byte item on stack
-77_jj11_PUSH24_jj32_3_jjjj33_Place 24 byte item on stack
-78_jj11_PUSH25_jj32_3_jjjj33_Place 25 byte item on stack
-79_jj11_PUSH26_jj32_3_jjjj33_Place 26 byte item on stack
-7a_jj11_PUSH27_jj32_3_jjjj33_Place 27 byte item on stack
-7b_jj11_PUSH28_jj32_3_jjjj33_Place 28 byte item on stack
-7c_jj11_PUSH29_jj32_3_jjjj33_Place 29 byte item on stack
-7d_jj11_PUSH30_jj32_3_jjjj33_Place 30 byte item on stack
-7e_jj11_PUSH31_jj32_3_jjjj33_Place 31 byte item on stack
-7f_jj11_PUSH32_jj32_3_jjjj33_Place 32 byte (full word) item on stack
-80_jj11_DUP1_jj32_3_jjjj33_Duplicate 1st stack item
-81_jj11_DUP2_jj32_3_jjjj33_Duplicate 2nd stack item
-82_jj11_DUP3_jj32_3_jjjj33_Duplicate 3rd stack item
-83_jj11_DUP4_jj32_3_jjjj33_Duplicate 4th stack item
-84_jj11_DUP5_jj32_3_jjjj33_Duplicate 5th stack item
-85_jj11_DUP6_jj32_3_jjjj33_Duplicate 6th stack item
-86_jj11_DUP7_jj32_3_jjjj33_Duplicate 7th stack item
-87_jj11_DUP8_jj32_3_jjjj33_Duplicate 8th stack item
-88_jj11_DUP9_jj32_3_jjjj33_Duplicate 9th stack item
-89_jj11_DUP10_jj32_3_jjjj33_Duplicate 10th stack item
-8a_jj11_DUP11_jj32_3_jjjj33_Duplicate 11th stack item
-8b_jj11_DUP12_jj32_3_jjjj33_Duplicate 12th stack item
-8c_jj11_DUP13_jj32_3_jjjj33_Duplicate 13th stack item
-8d_jj11_DUP14_jj32_3_jjjj33_Duplicate 14th stack item
-8e_jj11_DUP15_jj32_3_jjjj33_Duplicate 15th stack item
-8f_jj11_DUP16_jj32_3_jjjj33_Duplicate 16th stack item
-90_jj11_SWAP1_jj32_3_jjjj33_Exchange 1st and 2nd stack items
-91_jj11_SWAP2_jj32_3_jjjj33_Exchange 1st and 3rd stack items
-92_jj11_SWAP3_jj32_3_jjjj33_Exchange 1st and 4th stack items
-93_jj11_SWAP4_jj32_3_jjjj33_Exchange 1st and 5th stack items
-94_jj11_SWAP5_jj32_3_jjjj33_Exchange 1st and 6th stack items
-95_jj11_SWAP6_jj32_3_jjjj33_Exchange 1st and 7th stack items
-96_jj11_SWAP7_jj32_3_jjjj33_Exchange 1st and 8th stack items
-97_jj11_SWAP8_jj32_3_jjjj33_Exchange 1st and 9th stack items
-98_jj11_SWAP9_jj32_3_jjjj33_Exchange 1st and 10th stack items
-99_jj11_SWAP10_jj32_3_jjjj33_Exchange 1st and 11th stack items
-9a_jj11_SWAP11_jj32_3_jjjj33_Exchange 1st and 12th stack items
-9b_jj11_SWAP12_jj32_3_jjjj33_Exchange 1st and 13th stack items
-9c_jj11_SWAP13_jj32_3_jjjj33_Exchange 1st and 14th stack items
-9d_jj11_SWAP14_jj32_3_jjjj33_Exchange 1st and 15th stack items
-9e_jj11_SWAP15_jj32_3_jjjj33_Exchange 1st and 16th stack items
-9f_jj11_SWAP16_jj32_3_jjjj33_Exchange 1st and 17th stack items
-a0_jj11_LOG0_jj32_375_jjjj33_Append log record with no topics
-a1_jj11_LOG1_jj32_750_jjjj33_Append log record with one topic
-a2_jj11_LOG2_jj32_1125_jjjj33_Append log record with two topics
-a3_jj11_LOG3_jj32_1500_jjjj33_Append log record with three topics
-a4_jj11_LOG4_jj32_1875_jjjj33_Append log record with four topics
-f0_jj11_CREATE_jj32_32000_jjjj33_Create a new account with associated code
-f1_jj11_CALL_jj32_40_jjjj33_Message-call into an account
-f2_jj11_CALLCODE_jj32_40_jjjj33_Message-call into this account with alternative account’s code
-f3_jj11_RETURN_jj32_0_jjjj33_Halt execution returning output data
-f4_jj11_DELEGATECALL_jj32_40_jjjj33_Message-call into this account with an alternative account’s code, but persisting the current values for sender and value
-fe_jj11_INVALID_s_NaN_s_Designated invalid instruction
-ff_jj11_SELFDESTRUCT_jj32_0_jjjj33_Halt execution and register account for later deletion
+0x00_jj11_STOP_jj32_0_jjjj33_Halts execution
+0x01_jj11_ADD_jj32_3_jjjj33_Addition operation
+0x02_jj11_MUL_jj32_5_jjjj33_Multiplication operation
+0x03_jj11_SUB_jj32_3_jjjj33_Subtraction operation
+0x04_jj11_DIV_jj32_5_jjjj33_Integer division operation
+0x05_jj11_SDIV_jj32_5_jjjj33_Signed integer division operation (truncated)
+0x06_jj11_MOD_jj32_5_jjjj33_Modulo remainder operation
+0x07_jj11_SMOD_jj32_5_jjjj33_Signed modulo remainder operation
+0x08_jj11_ADDMOD_jj32_8_jjjj33_Modulo addition operation
+0x09_jj11_MULMOD_jj32_8_jjjj33_Modulo multiplication operation
+0x0a_jj11_EXP_jj32_10_jjjj33_Exponential operation
+0x0b_jj11_SIGNEXTEND_jj32_5_jjjj33_Extend length of two’s complement signed integer
+0x10_jj11_LT_jj32_3_jjjj33_Less-than comparison
+0x11_jj11_GT_jj32_3_jjjj33_Greater-than comparison
+0x12_jj11_SLT_jj32_3_jjjj33_Signed less-than comparison
+0x13_jj11_SGT_jj32_3_jjjj33_Signed greater-than comparison
+0x14_jj11_EQ_jj32_3_jjjj33_Equality comparison
+0x15_jj11_ISZERO_jj32_3_jjjj33_Simple not operator
+0x16_jj11_AND_jj32_3_jjjj33_Bitwise AND operation
+0x17_jj11_OR_jj32_3_jjjj33_Bitwise OR operation
+0x18_jj11_XOR_jj32_3_jjjj33_Bitwise XOR operation
+0x19_jj11_NOT_jj32_3_jjjj33_Bitwise NOT operation
+0x1a_jj11_BYTE_jj32_3_jjjj33_Retrieve single byte from word
+0x20_jj11_SHA3_jj32_30_jjjj33_Compute Keccak-256 hash
+0x30_jj11_ADDRESS_jj32_2_jjjj33_Get address of currently executing account
+0x31_jj11_BALANCE_jj32_20_jjjj33_Get balance of the given account
+0x32_jj11_ORIGIN_jj32_2_jjjj33_Get execution origination address
+0x33_jj11_CALLER_jj32_2_jjjj33_Get caller address
+0x34_jj11_CALLVALUE_jj32_2_jjjj33_Get deposited value by the instruction/transaction responsible for this execution
+0x35_jj11_CALLDATALOAD_jj32_3_jjjj33_Get input data of current environment
+0x36_jj11_CALLDATASIZE_jj32_2_jjjj33_Get size of input data in current environment
+0x37_jj11_CALLDATACOPY_jj32_3_jjjj33_Copy input data in current environment to memory
+0x38_jj11_CODESIZE_jj32_2_jjjj33_Get size of code running in current environment
+0x39_jj11_CODECOPY_jj32_3_jjjj33_Copy code running in current environment to memory
+0x3a_jj11_GASPRICE_jj32_2_jjjj33_Get price of gas in current environment
+0x3b_jj11_EXTCODESIZE_jj32_20_jjjj33_Get size of an account’s code
+0x3c_jj11_EXTCODECOPY_jj32_20_jjjj33_Copy an account’s code to memory
+0x40_jj11_BLOCKHASH_jj32_20_jjjj33_Get the hash of one of the 256 most recent complete blocks
+0x41_jj11_COINBASE_jj32_2_jjjj33_Get the block’s beneficiary address
+0x42_jj11_TIMESTAMP_jj32_2_jjjj33_Get the block’s timestamp
+0x43_jj11_NUMBER_jj32_2_jjjj33_Get the block’s number
+0x44_jj11_DIFFICULTY_jj32_2_jjjj33_Get the block’s difficulty
+0x45_jj11_GASLIMIT_jj32_2_jjjj33_Get the block’s gas limit
+0x50_jj11_POP_jj32_2_jjjj33_Remove item from stack
+0x51_jj11_MLOAD_jj32_3_jjjj33_Load word from memory
+0x52_jj11_MSTORE_jj32_3_jjjj33_Save word to memory
+0x53_jj11_MSTORE8_jj32_3_jjjj33_Save byte to memory
+0x54_jj11_SLOAD_jj32_50_jjjj33_Load word from storage
+0x55_jj11_SSTORE_jj32_5000_jjjj33_Save word to storage
+0x56_jj11_JUMP_jj32_8_jjjj33_Alter the program counter
+0x57_jj11_JUMPI_jj32_10_jjjj33_Conditionally alter the program counter
+0x58_jj11_PC_jj32_2_jjjj33_Get the value of the program counter prior to the increment corresponding to this instruction
+0x59_jj11_MSIZE_jj32_2_jjjj33_Get the size of active memory in bytes
+0x5a_jj11_GAS_jj32_2_jjjj33_Get the amount of available gas, including the corresponding reduction for the cost of this instruction
+0x5b_jj11_JUMPDEST_jj32_1_jjjj33_Mark a valid destination for jumps
+0x60_jj11_PUSH1_jj32_3_jjjj33_Place 1 byte item on stack
+0x61_jj11_PUSH2_jj32_3_jjjj33_Place 2 byte item on stack
+0x62_jj11_PUSH3_jj32_3_jjjj33_Place 3 byte item on stack
+0x63_jj11_PUSH4_jj32_3_jjjj33_Place 4 byte item on stack
+0x64_jj11_PUSH5_jj32_3_jjjj33_Place 5 byte item on stack
+0x65_jj11_PUSH6_jj32_3_jjjj33_Place 6 byte item on stack
+0x66_jj11_PUSH7_jj32_3_jjjj33_Place 7 byte item on stack
+0x67_jj11_PUSH8_jj32_3_jjjj33_Place 8 byte item on stack
+0x68_jj11_PUSH9_jj32_3_jjjj33_Place 9 byte item on stack
+0x69_jj11_PUSH10_jj32_3_jjjj33_Place 10 byte item on stack
+0x6a_jj11_PUSH11_jj32_3_jjjj33_Place 11 byte item on stack
+0x6b_jj11_PUSH12_jj32_3_jjjj33_Place 12 byte item on stack
+0x6c_jj11_PUSH13_jj32_3_jjjj33_Place 13 byte item on stack
+0x6d_jj11_PUSH14_jj32_3_jjjj33_Place 14 byte item on stack
+0x6e_jj11_PUSH15_jj32_3_jjjj33_Place 15 byte item on stack
+0x6f_jj11_PUSH16_jj32_3_jjjj33_Place 16 byte item on stack
+0x70_jj11_PUSH17_jj32_3_jjjj33_Place 17 byte item on stack
+0x71_jj11_PUSH18_jj32_3_jjjj33_Place 18 byte item on stack
+0x72_jj11_PUSH19_jj32_3_jjjj33_Place 19 byte item on stack
+0x73_jj11_PUSH20_jj32_3_jjjj33_Place 20 byte item on stack
+0x74_jj11_PUSH21_jj32_3_jjjj33_Place 21 byte item on stack
+0x75_jj11_PUSH22_jj32_3_jjjj33_Place 22 byte item on stack
+0x76_jj11_PUSH23_jj32_3_jjjj33_Place 23 byte item on stack
+0x77_jj11_PUSH24_jj32_3_jjjj33_Place 24 byte item on stack
+0x78_jj11_PUSH25_jj32_3_jjjj33_Place 25 byte item on stack
+0x79_jj11_PUSH26_jj32_3_jjjj33_Place 26 byte item on stack
+0x7a_jj11_PUSH27_jj32_3_jjjj33_Place 27 byte item on stack
+0x7b_jj11_PUSH28_jj32_3_jjjj33_Place 28 byte item on stack
+0x7c_jj11_PUSH29_jj32_3_jjjj33_Place 29 byte item on stack
+0x7d_jj11_PUSH30_jj32_3_jjjj33_Place 30 byte item on stack
+0x7e_jj11_PUSH31_jj32_3_jjjj33_Place 31 byte item on stack
+0x7f_jj11_PUSH32_jj32_3_jjjj33_Place 32 byte (full word) item on stack
+0x80_jj11_DUP1_jj32_3_jjjj33_Duplicate 1st stack item
+0x81_jj11_DUP2_jj32_3_jjjj33_Duplicate 2nd stack item
+0x82_jj11_DUP3_jj32_3_jjjj33_Duplicate 3rd stack item
+0x83_jj11_DUP4_jj32_3_jjjj33_Duplicate 4th stack item
+0x84_jj11_DUP5_jj32_3_jjjj33_Duplicate 5th stack item
+0x85_jj11_DUP6_jj32_3_jjjj33_Duplicate 6th stack item
+0x86_jj11_DUP7_jj32_3_jjjj33_Duplicate 7th stack item
+0x87_jj11_DUP8_jj32_3_jjjj33_Duplicate 8th stack item
+0x88_jj11_DUP9_jj32_3_jjjj33_Duplicate 9th stack item
+0x89_jj11_DUP10_jj32_3_jjjj33_Duplicate 10th stack item
+0x8a_jj11_DUP11_jj32_3_jjjj33_Duplicate 11th stack item
+0x8b_jj11_DUP12_jj32_3_jjjj33_Duplicate 12th stack item
+0x8c_jj11_DUP13_jj32_3_jjjj33_Duplicate 13th stack item
+0x8d_jj11_DUP14_jj32_3_jjjj33_Duplicate 14th stack item
+0x8e_jj11_DUP15_jj32_3_jjjj33_Duplicate 15th stack item
+0x8f_jj11_DUP16_jj32_3_jjjj33_Duplicate 16th stack item
+0x90_jj11_SWAP1_jj32_3_jjjj33_Exchange 1st and 2nd stack items
+0x91_jj11_SWAP2_jj32_3_jjjj33_Exchange 1st and 3rd stack items
+0x92_jj11_SWAP3_jj32_3_jjjj33_Exchange 1st and 4th stack items
+0x93_jj11_SWAP4_jj32_3_jjjj33_Exchange 1st and 5th stack items
+0x94_jj11_SWAP5_jj32_3_jjjj33_Exchange 1st and 6th stack items
+0x95_jj11_SWAP6_jj32_3_jjjj33_Exchange 1st and 7th stack items
+0x96_jj11_SWAP7_jj32_3_jjjj33_Exchange 1st and 8th stack items
+0x97_jj11_SWAP8_jj32_3_jjjj33_Exchange 1st and 9th stack items
+0x98_jj11_SWAP9_jj32_3_jjjj33_Exchange 1st and 10th stack items
+0x99_jj11_SWAP10_jj32_3_jjjj33_Exchange 1st and 11th stack items
+0x9a_jj11_SWAP11_jj32_3_jjjj33_Exchange 1st and 12th stack items
+0x9b_jj11_SWAP12_jj32_3_jjjj33_Exchange 1st and 13th stack items
+0x9c_jj11_SWAP13_jj32_3_jjjj33_Exchange 1st and 14th stack items
+0x9d_jj11_SWAP14_jj32_3_jjjj33_Exchange 1st and 15th stack items
+0x9e_jj11_SWAP15_jj32_3_jjjj33_Exchange 1st and 16th stack items
+0x9f_jj11_SWAP16_jj32_3_jjjj33_Exchange 1st and 17th stack items
+0xa0_jj11_LOG0_jj32_375_jjjj33_Append log record with no topics
+0xa1_jj11_LOG1_jj32_750_jjjj33_Append log record with one topic
+0xa2_jj11_LOG2_jj32_1125_jjjj33_Append log record with two topics
+0xa3_jj11_LOG3_jj32_1500_jjjj33_Append log record with three topics
+0xa4_jj11_LOG4_jj32_1875_jjjj33_Append log record with four topics
+0xf0_jj11_CREATE_jj32_32000_jjjj33_Create a new account with associated code
+0xf1_jj11_CALL_jj32_40_jjjj33_Message-call into an account
+0xf2_jj11_CALLCODE_jj32_40_jjjj33_Message-call into this account with alternative account’s code
+0xf3_jj11_RETURN_jj32_0_jjjj33_Halt execution returning output data
+0xf4_jj11_DELEGATECALL_jj32_40_jjjj33_Message-call into this account with an alternative account’s code, but persisting the current values for sender and value
+0xfe_jj11_INVALID_s_NaN_s_Designated invalid instruction
+0xff_jj11_SELFDESTRUCT_jj32_0_jjjj33_Halt execution and register account for later deletion
