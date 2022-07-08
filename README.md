@@ -141,7 +141,7 @@ After the stack, the memory
 
 
 Solidity code
-        ```
+```
 * contract Example {
 *     struct Position {
 *         address owner;
