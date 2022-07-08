@@ -45,11 +45,12 @@ impl Vm {
 		*/
 		
 		let code = decode(&buffer)?;
-
+/*
 		for b in &code {
 			println!("0x{:x}", b) 
 		}
 		println!("{}", buffer);
+*/
 		
 		Ok(Vm { 
 			code: code, 
@@ -66,7 +67,7 @@ impl Vm {
 	// decoding
 	pub fn next(&mut self) -> Option<Opcode> {
 		
-		println!("{:?}", self.code);
+		//println!("{:?}", self.code);
 		
 		if self.pc >= self.code.len() {
 			return Some(Opcode::EOF);
