@@ -56,7 +56,8 @@ impl Vm {
 			pc: 0, 
 			stack: Vec::new(), 
 			mem: Memory::new(), 
-			input_data, at_end: false
+			input_data, 
+			at_end: false
 		})
 		//Ok(Vm { code: code, pc: 0, stack: Vec::new(), at_end: false})
 		//Ok(Vm { code: code, pc: 0, stack: Vec::new()})
@@ -71,7 +72,7 @@ impl Vm {
 			return Some(Opcode::EOF);
 		}
 
-	//std::process::exit(self.pc.try_into().unwrap());
+		//std::process::exit(self.pc.try_into().unwrap());
 		let addr = self.pc;
 		match self.code[addr] {
 			 0x00 => {
