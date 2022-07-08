@@ -51,7 +51,13 @@ impl Vm {
 		}
 		println!("{}", buffer);
 		
-		Ok(Vm { code: code, pc: 0, stack: Vec::new(), mem: Memory::new(), input_data, at_end: false})
+		Ok(Vm { 
+			code: code, 
+			pc: 0, 
+			stack: Vec::new(), 
+			mem: Memory::new(), 
+			input_data, at_end: false
+		})
 		//Ok(Vm { code: code, pc: 0, stack: Vec::new(), at_end: false})
 		//Ok(Vm { code: code, pc: 0, stack: Vec::new()})
 	}

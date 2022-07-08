@@ -24,9 +24,15 @@ fn debug(vm: &mut Vm) {
 
 fn create_vm(binary: Vec<u8>) -> Vm {
 	//Vm { code: binary, pc: 0, stack: Vec::new(), at_end: false}
-	
 	let data = (0..32).collect();
-	Vm { code: binary, pc: 0, stack: Vec::new(), mem: Memory::new(), input_data: InputParameters::new(data), at_end: false}
+	Vm { 
+		code: binary, 
+		pc: 0, 
+		stack: Vec::new(), 
+		mem: Memory::new(), 
+		input_data: InputParameters::new(data), 
+		at_end: false
+	}
 }
 
 fn vm_test() {
