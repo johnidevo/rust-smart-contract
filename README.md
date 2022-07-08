@@ -5,7 +5,8 @@
 * what kind of operations are possible using the stack
 
 
- (Part 2) by snoozetime (2018)
+(Part 2) by snoozetime (2018)
+
 VM specifications
 * The VM is described in the yellow paper, part 9: Yellow paper
 * The word size of the machine (and thus size of stack items 0 is 256-bits.
@@ -59,7 +60,9 @@ Find the addition in our compile Ethereum contract
 
 
 Flow control - If and Loops
+
 (Part 3) by snoozetime (2018)
+
 Looping and calling Functions in the EVM!
 * Implement an interpreter in Rust
 
@@ -76,6 +79,7 @@ Compiling a loop
 
 
 Testing in the VM
+
 Interlude
 * What could go wrong.
 
@@ -130,6 +134,7 @@ After the stack, the memory
 
 
 (Part 4) by snoozetime (2018)
+
 Solidity code
 * contract Example {
 *     struct Position {
@@ -151,6 +156,7 @@ Solidity code
 
 
 Specifications for memory 
+
 Memory layout
 * “The memory model is a simple word-addressed byte array.”
 * The stack had two basic operations: push and pop.
