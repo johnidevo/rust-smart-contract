@@ -56,7 +56,7 @@ fn vm_test() {
 	assert_eq!(16, vm.stack[0].as_u32()); // this is panicking in case of overflow.
 }
 
-fn interpret() {//vm: &mut Vm) {
+fn interpret(vm: &mut Vm) {
 	loop {
 		if vm.at_end {
 			break;
@@ -116,7 +116,7 @@ fn run() -> Result<(), Box<dyn Error>> {
 	match &*function {
 		"debugger" => debugger(&mut vm),
 		"debug" => debug(&mut vm),
-		"run" => interpret(),
+		"run" => interpret(&mut vm),
 		"test" => vm_test(),
 		_ => panic!("Expect either 'debug' or 'run' for first parameter")
 	}
