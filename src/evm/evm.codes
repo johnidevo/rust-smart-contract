@@ -1,924 +1,131 @@
-Opcode
-	
-Name
-	
-Minimum Gas
-	
-Description
-00
-	
-STOP
-	
-0
-	
-Halts execution
-01
-	
-ADD
-	
-3
-	
-Addition operation
-02
-	
-MUL
-	
-5
-	
-Multiplication operation
-03
-	
-SUB
-	
-3
-	
-Subtraction operation
-04
-	
-DIV
-	
-5
-	
-Integer division operation
-05
-	
-SDIV
-	
-5
-	
-Signed integer division operation (truncated)
-06
-	
-MOD
-	
-5
-	
-Modulo remainder operation
-07
-	
-SMOD
-	
-5
-	
-Signed modulo remainder operation
-08
-	
-ADDMOD
-	
-8
-	
-Modulo addition operation
-09
-	
-MULMOD
-	
-8
-	
-Modulo multiplication operation
-0a
-	
-EXP
-	
-10
-	
-Exponential operation
-0b
-	
-SIGNEXTEND
-	
-5
-	
-Extend length of two’s complement signed integer
-10
-	
-LT
-	
-3
-	
-Less-than comparison
-11
-	
-GT
-	
-3
-	
-Greater-than comparison
-12
-	
-SLT
-	
-3
-	
-Signed less-than comparison
-13
-	
-SGT
-	
-3
-	
-Signed greater-than comparison
-14
-	
-EQ
-	
-3
-	
-Equality comparison
-15
-	
-ISZERO
-	
-3
-	
-Simple not operator
-16
-	
-AND
-	
-3
-	
-Bitwise AND operation
-17
-	
-OR
-	
-3
-	
-Bitwise OR operation
-18
-	
-XOR
-	
-3
-	
-Bitwise XOR operation
-19
-	
-NOT
-	
-3
-	
-Bitwise NOT operation
-1a
-	
-BYTE
-	
-3
-	
-Retrieve single byte from word
-20
-	
-SHA3
-	
-30
-	
-Compute Keccak-256 hash
-30
-	
-ADDRESS
-	
-2
-	
-Get address of currently executing account
-31
-	
-BALANCE
-	
-20
-	
-Get balance of the given account
-32
-	
-ORIGIN
-	
-2
-	
-Get execution origination address
-33
-	
-CALLER
-	
-2
-	
-Get caller address
-34
-	
-CALLVALUE
-	
-2
-	
-Get deposited value by the instruction/transaction responsible for this execution
-35
-	
-CALLDATALOAD
-	
-3
-	
-Get input data of current environment
-36
-	
-CALLDATASIZE
-	
-2
-	
-Get size of input data in current environment
-37
-	
-CALLDATACOPY
-	
-3
-	
-Copy input data in current environment to memory
-38
-	
-CODESIZE
-	
-2
-	
-Get size of code running in current environment
-39
-	
-CODECOPY
-	
-3
-	
-Copy code running in current environment to memory
-3a
-	
-GASPRICE
-	
-2
-	
-Get price of gas in current environment
-3b
-	
-EXTCODESIZE
-	
-20
-	
-Get size of an account’s code
-3c
-	
-EXTCODECOPY
-	
-20
-	
-Copy an account’s code to memory
-40
-	
-BLOCKHASH
-	
-20
-	
-Get the hash of one of the 256 most recent complete blocks
-41
-	
-COINBASE
-	
-2
-	
-Get the block’s beneficiary address
-42
-	
-TIMESTAMP
-	
-2
-	
-Get the block’s timestamp
-43
-	
-NUMBER
-	
-2
-	
-Get the block’s number
-44
-	
-DIFFICULTY
-	
-2
-	
-Get the block’s difficulty
-45
-	
-GASLIMIT
-	
-2
-	
-Get the block’s gas limit
-50
-	
-POP
-	
-2
-	
-Remove item from stack
-51
-	
-MLOAD
-	
-3
-	
-Load word from memory
-52
-	
-MSTORE
-	
-3
-	
-Save word to memory
-53
-	
-MSTORE8
-	
-3
-	
-Save byte to memory
-54
-	
-SLOAD
-	
-50
-	
-Load word from storage
-55
-	
-SSTORE
-	
-5000
-	
-Save word to storage
-56
-	
-JUMP
-	
-8
-	
-Alter the program counter
-57
-	
-JUMPI
-	
-10
-	
-Conditionally alter the program counter
-58
-	
-PC
-	
-2
-	
-Get the value of the program counter prior to the increment corresponding to this instruction
-59
-	
-MSIZE
-	
-2
-	
-Get the size of active memory in bytes
-5a
-	
-GAS
-	
-2
-	
-Get the amount of available gas, including the corresponding reduction for the cost of this instruction
-5b
-	
-JUMPDEST
-	
-1
-	
-Mark a valid destination for jumps
-60
-	
-PUSH1
-	
-3
-	
-Place 1 byte item on stack
-61
-	
-PUSH2
-	
-3
-	
-Place 2 byte item on stack
-62
-	
-PUSH3
-	
-3
-	
-Place 3 byte item on stack
-63
-	
-PUSH4
-	
-3
-	
-Place 4 byte item on stack
-64
-	
-PUSH5
-	
-3
-	
-Place 5 byte item on stack
-65
-	
-PUSH6
-	
-3
-	
-Place 6 byte item on stack
-66
-	
-PUSH7
-	
-3
-	
-Place 7 byte item on stack
-67
-	
-PUSH8
-	
-3
-	
-Place 8 byte item on stack
-68
-	
-PUSH9
-	
-3
-	
-Place 9 byte item on stack
-69
-	
-PUSH10
-	
-3
-	
-Place 10 byte item on stack
-6a
-	
-PUSH11
-	
-3
-	
-Place 11 byte item on stack
-6b
-	
-PUSH12
-	
-3
-	
-Place 12 byte item on stack
-6c
-	
-PUSH13
-	
-3
-	
-Place 13 byte item on stack
-6d
-	
-PUSH14
-	
-3
-	
-Place 14 byte item on stack
-6e
-	
-PUSH15
-	
-3
-	
-Place 15 byte item on stack
-6f
-	
-PUSH16
-	
-3
-	
-Place 16 byte item on stack
-70
-	
-PUSH17
-	
-3
-	
-Place 17 byte item on stack
-71
-	
-PUSH18
-	
-3
-	
-Place 18 byte item on stack
-72
-	
-PUSH19
-	
-3
-	
-Place 19 byte item on stack
-73
-	
-PUSH20
-	
-3
-	
-Place 20 byte item on stack
-74
-	
-PUSH21
-	
-3
-	
-Place 21 byte item on stack
-75
-	
-PUSH22
-	
-3
-	
-Place 22 byte item on stack
-76
-	
-PUSH23
-	
-3
-	
-Place 23 byte item on stack
-77
-	
-PUSH24
-	
-3
-	
-Place 24 byte item on stack
-78
-	
-PUSH25
-	
-3
-	
-Place 25 byte item on stack
-79
-	
-PUSH26
-	
-3
-	
-Place 26 byte item on stack
-7a
-	
-PUSH27
-	
-3
-	
-Place 27 byte item on stack
-7b
-	
-PUSH28
-	
-3
-	
-Place 28 byte item on stack
-7c
-	
-PUSH29
-	
-3
-	
-Place 29 byte item on stack
-7d
-	
-PUSH30
-	
-3
-	
-Place 30 byte item on stack
-7e
-	
-PUSH31
-	
-3
-	
-Place 31 byte item on stack
-7f
-	
-PUSH32
-	
-3
-	
-Place 32 byte (full word) item on stack
-80
-	
-DUP1
-	
-3
-	
-Duplicate 1st stack item
-81
-	
-DUP2
-	
-3
-	
-Duplicate 2nd stack item
-82
-	
-DUP3
-	
-3
-	
-Duplicate 3rd stack item
-83
-	
-DUP4
-	
-3
-	
-Duplicate 4th stack item
-84
-	
-DUP5
-	
-3
-	
-Duplicate 5th stack item
-85
-	
-DUP6
-	
-3
-	
-Duplicate 6th stack item
-86
-	
-DUP7
-	
-3
-	
-Duplicate 7th stack item
-87
-	
-DUP8
-	
-3
-	
-Duplicate 8th stack item
-88
-	
-DUP9
-	
-3
-	
-Duplicate 9th stack item
-89
-	
-DUP10
-	
-3
-	
-Duplicate 10th stack item
-8a
-	
-DUP11
-	
-3
-	
-Duplicate 11th stack item
-8b
-	
-DUP12
-	
-3
-	
-Duplicate 12th stack item
-8c
-	
-DUP13
-	
-3
-	
-Duplicate 13th stack item
-8d
-	
-DUP14
-	
-3
-	
-Duplicate 14th stack item
-8e
-	
-DUP15
-	
-3
-	
-Duplicate 15th stack item
-8f
-	
-DUP16
-	
-3
-	
-Duplicate 16th stack item
-90
-	
-SWAP1
-	
-3
-	
-Exchange 1st and 2nd stack items
-91
-	
-SWAP2
-	
-3
-	
-Exchange 1st and 3rd stack items
-92
-	
-SWAP3
-	
-3
-	
-Exchange 1st and 4th stack items
-93
-	
-SWAP4
-	
-3
-	
-Exchange 1st and 5th stack items
-94
-	
-SWAP5
-	
-3
-	
-Exchange 1st and 6th stack items
-95
-	
-SWAP6
-	
-3
-	
-Exchange 1st and 7th stack items
-96
-	
-SWAP7
-	
-3
-	
-Exchange 1st and 8th stack items
-97
-	
-SWAP8
-	
-3
-	
-Exchange 1st and 9th stack items
-98
-	
-SWAP9
-	
-3
-	
-Exchange 1st and 10th stack items
-99
-	
-SWAP10
-	
-3
-	
-Exchange 1st and 11th stack items
-9a
-	
-SWAP11
-	
-3
-	
-Exchange 1st and 12th stack items
-9b
-	
-SWAP12
-	
-3
-	
-Exchange 1st and 13th stack items
-9c
-	
-SWAP13
-	
-3
-	
-Exchange 1st and 14th stack items
-9d
-	
-SWAP14
-	
-3
-	
-Exchange 1st and 15th stack items
-9e
-	
-SWAP15
-	
-3
-	
-Exchange 1st and 16th stack items
-9f
-	
-SWAP16
-	
-3
-	
-Exchange 1st and 17th stack items
-a0
-	
-LOG0
-	
-375
-	
-Append log record with no topics
-a1
-	
-LOG1
-	
-750
-	
-Append log record with one topic
-a2
-	
-LOG2
-	
-1125
-	
-Append log record with two topics
-a3
-	
-LOG3
-	
-1500
-	
-Append log record with three topics
-a4
-	
-LOG4
-	
-1875
-	
-Append log record with four topics
-f0
-	
-CREATE
-	
-32000
-	
-Create a new account with associated code
-f1
-	
-CALL
-	
-40
-	
-Message-call into an account
-f2
-	
-CALLCODE
-	
-40
-	
-Message-call into this account with alternative account’s code
-f3
-	
-RETURN
-	
-0
-	
-Halt execution returning output data
-f4
-	
-DELEGATECALL
-	
-40
-	
-Message-call into this account with an alternative account’s code, but persisting the current values for sender and value
-fe
-	
-INVALID
-	
-NaN
-	
-Designated invalid instruction
-ff
-	
-SELFDESTRUCT
-	
-0
-	
-Halt execution and register account for later deletion
+00_1_STOP_s_xx_s_Halts execution
+01_1_ADD_s_xx_s_Addition operation
+02_1_MUL_s_xx_s_Multiplication operation
+03_1_SUB_s_xx_s_Subtraction operation
+04_1_DIV_s_xx_s_Integer division operation
+05_1_SDIV_s_xx_s_Signed integer division operation (truncated)
+06_1_MOD_s_xx_s_Modulo remainder operation
+07_1_SMOD_s_xx_s_Signed modulo remainder operation
+08_1_ADDMOD_s_xx_s_Modulo addition operation
+09_1_MULMOD_s_xx_s_Modulo multiplication operation
+0a_1_EXP_s_10_s_Exponential operation
+0b_1_SIGNEXTEND_s_xx_s_Extend length of two’s complement signed integer
+10_1_LT_s_xx_s_Less-than comparison
+11_1_GT_s_xx_s_Greater-than comparison
+12_1_SLT_s_xx_s_Signed less-than comparison
+13_1_SGT_s_xx_s_Signed greater-than comparison
+14_1_EQ_s_xx_s_Equality comparison
+15_1_ISZERO_s_xx_s_Simple not operator
+16_1_AND_s_xx_s_Bitwise AND operation
+17_1_OR_s_xx_s_Bitwise OR operation
+18_1_XOR_s_xx_s_Bitwise XOR operation
+19_1_NOT_s_xx_s_Bitwise NOT operation
+1a_1_BYTE_s_xx_s_Retrieve single byte from word
+20_1_SHA3_s_30_s_Compute Keccak-256 hash
+30_1_ADDRESS_s_xx_s_Get address of currently executing account
+31_1_BALANCE_s_20_s_Get balance of the given account
+32_1_ORIGIN_s_xx_s_Get execution origination address
+33_1_CALLER_s_xx_s_Get caller address
+34_1_CALLVALUE_s_xx_s_Get deposited value by the instruction/transaction responsible for this execution
+35_1_CALLDATALOAD_s_xx_s_Get input data of current environment
+36_1_CALLDATASIZE_s_xx_s_Get size of input data in current environment
+37_1_CALLDATACOPY_s_xx_s_Copy input data in current environment to memory
+38_1_CODESIZE_s_xx_s_Get size of code running in current environment
+39_1_CODECOPY_s_xx_s_Copy code running in current environment to memory
+3a_1_GASPRICE_s_xx_s_Get price of gas in current environment
+3b_1_EXTCODESIZE_s_20_s_Get size of an account’s code
+3c_1_EXTCODECOPY_s_20_s_Copy an account’s code to memory
+40_1_BLOCKHASH_s_20_s_Get the hash of one of the 256 most recent complete blocks
+41_1_COINBASE_s_xx_s_Get the block’s beneficiary address
+42_1_TIMESTAMP_s_xx_s_Get the block’s timestamp
+43_1_NUMBER_s_xx_s_Get the block’s number
+44_1_DIFFICULTY_s_xx_s_Get the block’s difficulty
+45_1_GASLIMIT_s_xx_s_Get the block’s gas limit
+50_1_POP_s_xx_s_Remove item from stack
+51_1_MLOAD_s_xx_s_Load word from memory
+52_1_MSTORE_s_xx_s_Save word to memory
+53_1_MSTORE8_s_xx_s_Save byte to memory
+54_1_SLOAD_s_50_s_Load word from storage
+55_1_SSTORE_s_5000_s_Save word to storage
+56_1_JUMP_s_xx_s_Alter the program counter
+57_1_JUMPI_s_10_s_Conditionally alter the program counter
+58_1_PC_s_xx_s_Get the value of the program counter prior to the increment corresponding to this instruction
+59_1_MSIZE_s_xx_s_Get the size of active memory in bytes
+5a_1_GAS_s_xx_s_Get the amount of available gas, including the corresponding reduction for the cost of this instruction
+5b_1_JUMPDEST_s_xx_s_Mark a valid destination for jumps
+60_1_PUSH1_s_xx_s_Place 1 byte item on stack
+61_1_PUSH2_s_xx_s_Place 2 byte item on stack
+62_1_PUSH3_s_xx_s_Place 3 byte item on stack
+63_1_PUSH4_s_xx_s_Place 4 byte item on stack
+64_1_PUSH5_s_xx_s_Place 5 byte item on stack
+65_1_PUSH6_s_xx_s_Place 6 byte item on stack
+66_1_PUSH7_s_xx_s_Place 7 byte item on stack
+67_1_PUSH8_s_xx_s_Place 8 byte item on stack
+68_1_PUSH9_d_3_s_Place 9 byte item on stack
+69_1_PUSH10_s_xx_s_Place 10 byte item on stack
+6a_1_PUSH11_s_xx_s_Place 11 byte item on stack
+6b_1_PUSH12_s_xx_s_Place 12 byte item on stack
+6c_1_PUSH13_s_xx_s_Place 13 byte item on stack
+6d_1_PUSH14_s_xx_s_Place 14 byte item on stack
+6e_1_PUSH15_s_xx_s_Place 15 byte item on stack
+6f_1_PUSH16_s_xx_s_Place 16 byte item on stack
+70_1_PUSH17_s_xx_s_Place 17 byte item on stack
+71_1_PUSH18_s_xx_s_Place 18 byte item on stack
+72_1_PUSH19_d_3_s_Place 19 byte item on stack
+73_1_PUSH20_s_xx_s_Place 20 byte item on stack
+74_1_PUSH21_s_xx_s_Place 21 byte item on stack
+75_1_PUSH22_s_xx_s_Place 22 byte item on stack
+76_1_PUSH23_s_xx_s_Place 23 byte item on stack
+77_1_PUSH24_s_xx_s_Place 24 byte item on stack
+78_1_PUSH25_s_xx_s_Place 25 byte item on stack
+79_1_PUSH26_s_xx_s_Place 26 byte item on stack
+7a_1_PUSH27_d_3_s_Place 27 byte item on stack
+7b_1_PUSH28_s_xx_s_Place 28 byte item on stack
+7c_1_PUSH29_s_xx_s_Place 29 byte item on stack
+7d_1_PUSH30_s_xx_s_Place 30 byte item on stack
+7e_1_PUSH31_s_xx_s_Place 31 byte item on stack
+7f_1_PUSH32_s_xx_s_Place 32 byte (full word) item on stack
+80_1_DUP1_s_xx_s_Duplicate 1st stack item
+81_1_DUP2_s_xx_s_Duplicate 2nd stack item
+82_1_DUP3_s_xx_s_Duplicate 3rd stack item
+83_1_DUP4_s_xx_s_Duplicate 4th stack item
+84_1_DUP5_s_xx_s_Duplicate 5th stack item
+85_1_DUP6_s_xx_s_Duplicate 6th stack item
+86_1_DUP7_s_xx_s_Duplicate 7th stack item
+87_1_DUP8_s_xx_s_Duplicate 8th stack item
+88_1_DUP9_s_xx_s_Duplicate 9th stack item
+89_1_DUP10_s_xx_s_Duplicate 10th stack item
+8a_1_DUP11_s_xx_s_Duplicate 11th stack item
+8b_1_DUP12_s_xx_s_Duplicate 12th stack item
+8c_1_DUP13_s_xx_s_Duplicate 13th stack item
+8d_1_DUP14_s_xx_s_Duplicate 14th stack item
+8e_1_DUP15_s_xx_s_Duplicate 15th stack item
+8f_1_DUP16_s_xx_s_Duplicate 16th stack item
+90_1_SWAP1_s_xx_s_Exchange 1st and 2nd stack items
+91_1_SWAP2_s_xx_s_Exchange 1st and 3rd stack items
+92_1_SWAP3_s_xx_s_Exchange 1st and 4th stack items
+93_1_SWAP4_s_xx_s_Exchange 1st and 5th stack items
+94_1_SWAP5_s_xx_s_Exchange 1st and 6th stack items
+95_1_SWAP6_s_xx_s_Exchange 1st and 7th stack items
+96_1_SWAP7_s_xx_s_Exchange 1st and 8th stack items
+97_1_SWAP8_s_xx_s_Exchange 1st and 9th stack items
+98_1_SWAP9_s_xx_s_Exchange 1st and 10th stack items
+99_1_SWAP10_s_xx_s_Exchange 1st and 11th stack items
+9a_1_SWAP11_s_xx_s_Exchange 1st and 12th stack items
+9b_1_SWAP12_s_xx_s_Exchange 1st and 13th stack items
+9c_1_SWAP13_s_xx_s_Exchange 1st and 14th stack items
+9d_1_SWAP14_s_xx_s_Exchange 1st and 15th stack items
+9e_1_SWAP15_s_xx_s_Exchange 1st and 16th stack items
+9f_1_SWAP16_s_xx_s_Exchange 1st and 17th stack items
+a0_1_LOG0_s_375_s_Append log record with no topics
+a1_1_LOG1_s_750_s_Append log record with one topic
+a2_1_LOG2_s_1125_s_Append log record with two topics
+a3_1_LOG3_s_1500_s_Append log record with three topics
+a4_1_LOG4_s_1875_s_Append log record with four topics
+f0_1_CREATE_s_32000_s_Create a new account with associated code
+f1_1_CALL_s_40_s_Message-call into an account
+f2_1_CALLCODE_s_40_s_Message-call into this account with alternative account’s code
+f3_1_RETURN_s_0_2_Halt execution returning output data
+f4_1_DELEGATECALL_s_40_2_Message-call into this account with an alternative account’s code, but persisting the current values for sender and value
+fe_1_INVALID_s_NaN_s_Designated invalid instruction
+ff_1_SELFDESTRUCT_s_xx_s_Halt execution and register account for later deletion
