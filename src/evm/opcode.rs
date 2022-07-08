@@ -296,7 +296,6 @@ pub enum Opcode {
 	INVALID(usize), //0xfe
 	SELFDESTRUCT(usize), // 0xff
 	
-	
 	PRINT(usize), // 0x00
 	
 /*
