@@ -9,6 +9,8 @@ use params::params::InputParameters;
 use std::error::Error;
 //use std::env;
 use std::io;
+use std::env;
+
 
 fn debug(vm: &mut Vm) {
 	loop {
@@ -115,4 +117,6 @@ fn run() -> Result<(), Box<dyn Error>> {
 
 fn main() {
     run().unwrap();
+	  // this method needs to be inside main() method
+  env::set_var("RUST_BACKTRACE", "1");
 }

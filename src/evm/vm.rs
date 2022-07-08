@@ -338,7 +338,7 @@ impl Vm {
 						let loaded_value = self.mem.get_word(offset.as_u64() as usize);
 						self.stack.push(loaded_value);
 					},
-					Opcode::MSTORE(_addr) => {
+					Opcode::MSTORE(addr) => {
 						let offset = self.stack.pop().unwrap();
 						let w = self.stack.pop().unwrap();
 						self.mem.set_word(offset.as_u64() as usize, w);
