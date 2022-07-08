@@ -2,13 +2,13 @@
 
 pragma solidity ^0.8.15;
 
-contract Addition{
+contract Addition {
 
 	int public x;
-    
-    function add() public {
-        int a = 5;
-        int b = 6;
-    	x = a + b;
-   	}
+
+	function add() public {
+		int a = 5;
+		int b = 6;
+		x = a + b;
+	}
 }

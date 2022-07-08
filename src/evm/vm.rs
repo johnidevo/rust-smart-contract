@@ -45,7 +45,7 @@ impl Vm {
 		*/
 		
 		let code = decode(&buffer)?;
-		
+
 		for b in &code {
 			println!("0x{:x}", b) 
 		}
