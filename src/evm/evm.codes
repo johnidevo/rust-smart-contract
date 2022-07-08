@@ -1,0 +1,924 @@
+Opcode
+	
+Name
+	
+Minimum Gas
+	
+Description
+00
+	
+STOP
+	
+0
+	
+Halts execution
+01
+	
+ADD
+	
+3
+	
+Addition operation
+02
+	
+MUL
+	
+5
+	
+Multiplication operation
+03
+	
+SUB
+	
+3
+	
+Subtraction operation
+04
+	
+DIV
+	
+5
+	
+Integer division operation
+05
+	
+SDIV
+	
+5
+	
+Signed integer division operation (truncated)
+06
+	
+MOD
+	
+5
+	
+Modulo remainder operation
+07
+	
+SMOD
+	
+5
+	
+Signed modulo remainder operation
+08
+	
+ADDMOD
+	
+8
+	
+Modulo addition operation
+09
+	
+MULMOD
+	
+8
+	
+Modulo multiplication operation
+0a
+	
+EXP
+	
+10
+	
+Exponential operation
+0b
+	
+SIGNEXTEND
+	
+5
+	
+Extend length of two’s complement signed integer
+10
+	
+LT
+	
+3
+	
+Less-than comparison
+11
+	
+GT
+	
+3
+	
+Greater-than comparison
+12
+	
+SLT
+	
+3
+	
+Signed less-than comparison
+13
+	
+SGT
+	
+3
+	
+Signed greater-than comparison
+14
+	
+EQ
+	
+3
+	
+Equality comparison
+15
+	
+ISZERO
+	
+3
+	
+Simple not operator
+16
+	
+AND
+	
+3
+	
+Bitwise AND operation
+17
+	
+OR
+	
+3
+	
+Bitwise OR operation
+18
+	
+XOR
+	
+3
+	
+Bitwise XOR operation
+19
+	
+NOT
+	
+3
+	
+Bitwise NOT operation
+1a
+	
+BYTE
+	
+3
+	
+Retrieve single byte from word
+20
+	
+SHA3
+	
+30
+	
+Compute Keccak-256 hash
+30
+	
+ADDRESS
+	
+2
+	
+Get address of currently executing account
+31
+	
+BALANCE
+	
+20
+	
+Get balance of the given account
+32
+	
+ORIGIN
+	
+2
+	
+Get execution origination address
+33
+	
+CALLER
+	
+2
+	
+Get caller address
+34
+	
+CALLVALUE
+	
+2
+	
+Get deposited value by the instruction/transaction responsible for this execution
+35
+	
+CALLDATALOAD
+	
+3
+	
+Get input data of current environment
+36
+	
+CALLDATASIZE
+	
+2
+	
+Get size of input data in current environment
+37
+	
+CALLDATACOPY
+	
+3
+	
+Copy input data in current environment to memory
+38
+	
+CODESIZE
+	
+2
+	
+Get size of code running in current environment
+39
+	
+CODECOPY
+	
+3
+	
+Copy code running in current environment to memory
+3a
+	
+GASPRICE
+	
+2
+	
+Get price of gas in current environment
+3b
+	
+EXTCODESIZE
+	
+20
+	
+Get size of an account’s code
+3c
+	
+EXTCODECOPY
+	
+20
+	
+Copy an account’s code to memory
+40
+	
+BLOCKHASH
+	
+20
+	
+Get the hash of one of the 256 most recent complete blocks
+41
+	
+COINBASE
+	
+2
+	
+Get the block’s beneficiary address
+42
+	
+TIMESTAMP
+	
+2
+	
+Get the block’s timestamp
+43
+	
+NUMBER
+	
+2
+	
+Get the block’s number
+44
+	
+DIFFICULTY
+	
+2
+	
+Get the block’s difficulty
+45
+	
+GASLIMIT
+	
+2
+	
+Get the block’s gas limit
+50
+	
+POP
+	
+2
+	
+Remove item from stack
+51
+	
+MLOAD
+	
+3
+	
+Load word from memory
+52
+	
+MSTORE
+	
+3
+	
+Save word to memory
+53
+	
+MSTORE8
+	
+3
+	
+Save byte to memory
+54
+	
+SLOAD
+	
+50
+	
+Load word from storage
+55
+	
+SSTORE
+	
+5000
+	
+Save word to storage
+56
+	
+JUMP
+	
+8
+	
+Alter the program counter
+57
+	
+JUMPI
+	
+10
+	
+Conditionally alter the program counter
+58
+	
+PC
+	
+2
+	
+Get the value of the program counter prior to the increment corresponding to this instruction
+59
+	
+MSIZE
+	
+2
+	
+Get the size of active memory in bytes
+5a
+	
+GAS
+	
+2
+	
+Get the amount of available gas, including the corresponding reduction for the cost of this instruction
+5b
+	
+JUMPDEST
+	
+1
+	
+Mark a valid destination for jumps
+60
+	
+PUSH1
+	
+3
+	
+Place 1 byte item on stack
+61
+	
+PUSH2
+	
+3
+	
+Place 2 byte item on stack
+62
+	
+PUSH3
+	
+3
+	
+Place 3 byte item on stack
+63
+	
+PUSH4
+	
+3
+	
+Place 4 byte item on stack
+64
+	
+PUSH5
+	
+3
+	
+Place 5 byte item on stack
+65
+	
+PUSH6
+	
+3
+	
+Place 6 byte item on stack
+66
+	
+PUSH7
+	
+3
+	
+Place 7 byte item on stack
+67
+	
+PUSH8
+	
+3
+	
+Place 8 byte item on stack
+68
+	
+PUSH9
+	
+3
+	
+Place 9 byte item on stack
+69
+	
+PUSH10
+	
+3
+	
+Place 10 byte item on stack
+6a
+	
+PUSH11
+	
+3
+	
+Place 11 byte item on stack
+6b
+	
+PUSH12
+	
+3
+	
+Place 12 byte item on stack
+6c
+	
+PUSH13
+	
+3
+	
+Place 13 byte item on stack
+6d
+	
+PUSH14
+	
+3
+	
+Place 14 byte item on stack
+6e
+	
+PUSH15
+	
+3
+	
+Place 15 byte item on stack
+6f
+	
+PUSH16
+	
+3
+	
+Place 16 byte item on stack
+70
+	
+PUSH17
+	
+3
+	
+Place 17 byte item on stack
+71
+	
+PUSH18
+	
+3
+	
+Place 18 byte item on stack
+72
+	
+PUSH19
+	
+3
+	
+Place 19 byte item on stack
+73
+	
+PUSH20
+	
+3
+	
+Place 20 byte item on stack
+74
+	
+PUSH21
+	
+3
+	
+Place 21 byte item on stack
+75
+	
+PUSH22
+	
+3
+	
+Place 22 byte item on stack
+76
+	
+PUSH23
+	
+3
+	
+Place 23 byte item on stack
+77
+	
+PUSH24
+	
+3
+	
+Place 24 byte item on stack
+78
+	
+PUSH25
+	
+3
+	
+Place 25 byte item on stack
+79
+	
+PUSH26
+	
+3
+	
+Place 26 byte item on stack
+7a
+	
+PUSH27
+	
+3
+	
+Place 27 byte item on stack
+7b
+	
+PUSH28
+	
+3
+	
+Place 28 byte item on stack
+7c
+	
+PUSH29
+	
+3
+	
+Place 29 byte item on stack
+7d
+	
+PUSH30
+	
+3
+	
+Place 30 byte item on stack
+7e
+	
+PUSH31
+	
+3
+	
+Place 31 byte item on stack
+7f
+	
+PUSH32
+	
+3
+	
+Place 32 byte (full word) item on stack
+80
+	
+DUP1
+	
+3
+	
+Duplicate 1st stack item
+81
+	
+DUP2
+	
+3
+	
+Duplicate 2nd stack item
+82
+	
+DUP3
+	
+3
+	
+Duplicate 3rd stack item
+83
+	
+DUP4
+	
+3
+	
+Duplicate 4th stack item
+84
+	
+DUP5
+	
+3
+	
+Duplicate 5th stack item
+85
+	
+DUP6
+	
+3
+	
+Duplicate 6th stack item
+86
+	
+DUP7
+	
+3
+	
+Duplicate 7th stack item
+87
+	
+DUP8
+	
+3
+	
+Duplicate 8th stack item
+88
+	
+DUP9
+	
+3
+	
+Duplicate 9th stack item
+89
+	
+DUP10
+	
+3
+	
+Duplicate 10th stack item
+8a
+	
+DUP11
+	
+3
+	
+Duplicate 11th stack item
+8b
+	
+DUP12
+	
+3
+	
+Duplicate 12th stack item
+8c
+	
+DUP13
+	
+3
+	
+Duplicate 13th stack item
+8d
+	
+DUP14
+	
+3
+	
+Duplicate 14th stack item
+8e
+	
+DUP15
+	
+3
+	
+Duplicate 15th stack item
+8f
+	
+DUP16
+	
+3
+	
+Duplicate 16th stack item
+90
+	
+SWAP1
+	
+3
+	
+Exchange 1st and 2nd stack items
+91
+	
+SWAP2
+	
+3
+	
+Exchange 1st and 3rd stack items
+92
+	
+SWAP3
+	
+3
+	
+Exchange 1st and 4th stack items
+93
+	
+SWAP4
+	
+3
+	
+Exchange 1st and 5th stack items
+94
+	
+SWAP5
+	
+3
+	
+Exchange 1st and 6th stack items
+95
+	
+SWAP6
+	
+3
+	
+Exchange 1st and 7th stack items
+96
+	
+SWAP7
+	
+3
+	
+Exchange 1st and 8th stack items
+97
+	
+SWAP8
+	
+3
+	
+Exchange 1st and 9th stack items
+98
+	
+SWAP9
+	
+3
+	
+Exchange 1st and 10th stack items
+99
+	
+SWAP10
+	
+3
+	
+Exchange 1st and 11th stack items
+9a
+	
+SWAP11
+	
+3
+	
+Exchange 1st and 12th stack items
+9b
+	
+SWAP12
+	
+3
+	
+Exchange 1st and 13th stack items
+9c
+	
+SWAP13
+	
+3
+	
+Exchange 1st and 14th stack items
+9d
+	
+SWAP14
+	
+3
+	
+Exchange 1st and 15th stack items
+9e
+	
+SWAP15
+	
+3
+	
+Exchange 1st and 16th stack items
+9f
+	
+SWAP16
+	
+3
+	
+Exchange 1st and 17th stack items
+a0
+	
+LOG0
+	
+375
+	
+Append log record with no topics
+a1
+	
+LOG1
+	
+750
+	
+Append log record with one topic
+a2
+	
+LOG2
+	
+1125
+	
+Append log record with two topics
+a3
+	
+LOG3
+	
+1500
+	
+Append log record with three topics
+a4
+	
+LOG4
+	
+1875
+	
+Append log record with four topics
+f0
+	
+CREATE
+	
+32000
+	
+Create a new account with associated code
+f1
+	
+CALL
+	
+40
+	
+Message-call into an account
+f2
+	
+CALLCODE
+	
+40
+	
+Message-call into this account with alternative account’s code
+f3
+	
+RETURN
+	
+0
+	
+Halt execution returning output data
+f4
+	
+DELEGATECALL
+	
+40
+	
+Message-call into this account with an alternative account’s code, but persisting the current values for sender and value
+fe
+	
+INVALID
+	
+NaN
+	
+Designated invalid instruction
+ff
+	
+SELFDESTRUCT
+	
+0
+	
+Halt execution and register account for later deletion
