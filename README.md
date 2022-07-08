@@ -273,8 +273,5 @@ Crafting the smart contract
 
 
 
-
-
-
 References
 * snoozetime. (2018). Ethereum Virtual Machine in Rust - Part 2: The stack. https://snoozetime.github.io/2018/11/14/ethereum-vm-2.html
