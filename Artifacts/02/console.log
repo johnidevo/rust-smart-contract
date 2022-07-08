@@ -1,0 +1,149 @@
+In file ./Artifacts/02/Addition.bin-runtime
+Correctly loaded VM
+0x0     PUSH1   Place 1-byte item on stack 0x80
+0x2     PUSH1   Place 1-byte item on stack 0x40
+0x4     MSTORE  Save word to memory
+0x5     CALLVALUE       Get deposited value by the instruction/transaction responsible for this execution
+                                       0x6     DUP1    Duplicate 1st stack item
+0x7     ISZERO  Simple not operator
+0x8     PUSH1   Place 1-byte item on stack 0xf
+0xa     JUMPI   Conditionally alter the program counter
+0xb     PUSH1   Place 1-byte item on stack 0x0
+0xd     DUP1    Duplicate 1st stack item
+0xf     JUMPDEST        Mark a valid destination for jumps
+0x10    POP     Remove item from stack
+0x11    PUSH1   Place 1-byte item on stack 0x4
+0x13    CALLDATASIZE    Get size of input data in current environment
+0x14    LT      Less-than comparison
+0x15    PUSH1   Place 1-byte item on stack 0x32
+0x17    JUMPI   Conditionally alter the program counter
+0x18    PUSH1   Place 1-byte item on stack 0x0
+0x1a    CALLDATALOAD    Get input data of current environment
+0x1b    PUSH1   Place 1-byte item on stack 0xe0
+0x1e    DUP1    Duplicate 1st stack item
+0x1f    PUSH4   Place 4 byte item on stack 0xc 0x55 0x69 0x9c
+0x24    EQ      Equality comparison
+0x25    PUSH1   Place 1-byte item on stack 0x37
+0x27    JUMPI   Conditionally alter the program counter
+0x28    DUP1    Duplicate 1st stack item
+0x29    PUSH4   Place 4 byte item on stack 0x4f 0x2b 0xe9 0x1f
+0x2e    EQ      Equality comparison
+0x2f    PUSH1   Place 1-byte item on stack 0x51
+0x31    JUMPI   Conditionally alter the program counter
+0x32    JUMPDEST        Mark a valid destination for jumps
+0x33    PUSH1   Place 1-byte item on stack 0x0
+0x35    DUP1    Duplicate 1st stack item
+0x37    JUMPDEST        Mark a valid destination for jumps
+0x40    PUSH1   Place 1-byte item on stack 0x40
+0x42    MLOAD   Load word from memory
+0x43    SWAP1   Exchange 1st and 2nd stack items
+0x44    DUP2    Duplicate 2nd stack item
+0x45    MSTORE  Save word to memory
+0x46    PUSH1   Place 1-byte item on stack 0x20
+0x48    ADD     Addition operation
+0x49    PUSH1   Place 1-byte item on stack 0x40
+0x4b    MLOAD   Load word from memory
+0x4c    DUP1    Duplicate 1st stack item
+0x4d    SWAP2   Exchange 1st and 3rd stack items
+0x4e    SUB     Subtraction operation
+0x4f    SWAP1   Exchange 1st and 2nd stack items
+0x50    RETURN  Halt execution returning output data
+0x51    JUMPDEST        Mark a valid destination for jumps
+0x52    PUSH1   Place 1-byte item on stack 0x57
+0x54    PUSH1   Place 1-byte item on stack 0x59
+0x56    JUMP    Alter the program counter
+0x57    JUMPDEST        Mark a valid destination for jumps
+0x58    STOP    Halts execution
+0x59    JUMPDEST        Mark a valid destination for jumps
+0x5a    PUSH1   Place 1-byte item on stack 0x5
+0x5c    PUSH1   Place 1-byte item on stack 0x6
+0x5e    PUSH1   Place 1-byte item on stack 0x65
+0x60    DUP2    Duplicate 2nd stack item
+0x61    DUP4    Duplicate 4th stack item
+0x62    PUSH1   Place 1-byte item on stack 0x82
+0x64    JUMP    Alter the program counter
+0x65    JUMPDEST        Mark a valid destination for jumps
+0x66    PUSH1   Place 1-byte item on stack 0x0
+0x68    SSTORE  Save word to storage
+0x69    POP     Remove item from stack
+0x6a    POP     Remove item from stack
+0x6b    JUMP    Alter the program counter
+0x6c    JUMPDEST        Mark a valid destination for jumps
+0x6d    PUSH4   Place 4 byte item on stack 0x4e 0x48 0x7b 0x71
+0x72    PUSH1   Place 1-byte item on stack 0xe0
+0x75    PUSH1   Place 1-byte item on stack 0x0
+0x77    MSTORE  Save word to memory
+0x78    PUSH1   Place 1-byte item on stack 0x11
+0x7a    PUSH1   Place 1-byte item on stack 0x4
+0x7c    MSTORE  Save word to memory
+0x7d    PUSH1   Place 1-byte item on stack 0x24
+0x7f    PUSH1   Place 1-byte item on stack 0x0
+0x82    JUMPDEST        Mark a valid destination for jumps
+0x83    PUSH1   Place 1-byte item on stack 0x0
+0x85    DUP1    Duplicate 1st stack item
+0x86    DUP3    Duplicate 3rd stack item
+0x87    SLT     Signed less-than comparison
+0x88    DUP1    Duplicate 1st stack item
+0x89    ISZERO  Simple not operator
+0x8a    PUSH1   Place 1-byte item on stack 0x1
+0x8c    PUSH1   Place 1-byte item on stack 0x1
+0x8e    PUSH1   Place 1-byte item on stack 0xff
+0x91    SUB     Subtraction operation
+0x92    DUP5    Duplicate 5th stack item
+0x93    SWAP1   Exchange 1st and 2nd stack items
+0x94    SUB     Subtraction operation
+0x95    DUP6    Duplicate 6th stack item
+0x96    SGT     Signed greater-than comparison
+0x97    AND     Bitwise AND operation
+0x98    ISZERO  Simple not operator
+0x99    PUSH1   Place 1-byte item on stack 0xa1
+0x9b    JUMPI   Conditionally alter the program counter
+0x9c    PUSH1   Place 1-byte item on stack 0xa1
+0x9e    PUSH1   Place 1-byte item on stack 0x6c
+0xa0    JUMP    Alter the program counter
+0xa1    JUMPDEST        Mark a valid destination for jumps
+0xa2    PUSH1   Place 1-byte item on stack 0x1
+0xa4    PUSH1   Place 1-byte item on stack 0xff
+0xa7    DUP4    Duplicate 4th stack item
+0xa8    SWAP1   Exchange 1st and 2nd stack items
+0xa9    SUB     Subtraction operation
+0xaa    DUP5    Duplicate 5th stack item
+0xab    SLT     Signed less-than comparison
+0xac    DUP2    Duplicate 2nd stack item
+0xad    AND     Bitwise AND operation
+0xae    ISZERO  Simple not operator
+0xaf    PUSH1   Place 1-byte item on stack 0xb7
+0xb1    JUMPI   Conditionally alter the program counter
+0xb2    PUSH1   Place 1-byte item on stack 0xb7
+0xb4    PUSH1   Place 1-byte item on stack 0x6c
+0xb6    JUMP    Alter the program counter
+0xb7    JUMPDEST        Mark a valid destination for jumps
+0xb8    POP     Remove item from stack
+0xb9    POP     Remove item from stack
+0xba    ADD     Addition operation
+0xbb    SWAP1   Exchange 1st and 2nd stack items
+0xbc    JUMP    Alter the program counter
+0xbd    INVALID Designated invalid instruction
+0xbe    LOG2    Append log record with two topics
+0xbf    PUSH5   Place 5 byte item on stack 0x69 0x70 0x66 0x73 0x58
+0xc6    SLT     Signed less-than comparison
+0xc7    SHA3    Compute Keccak-256 hash
+0xc8    ADD     Addition operation
+0xc9    PUSH4   Place 4 byte item on stack 0xa3 0x46 0x9b 0x4c
+0xce    PUSH24  Place 24 byte item on stack
+0xcf    PUSH11  Place 11 byte item on stack
+0xd0    PUSH10  Place 10 byte item on stack
+0xd1    PUSH21  Place 21 byte item on stack
+0xd2    PUSH4   Place 4 byte item on stack 0x4c 0xf2 0x3a 0x94
+0xd9    BLOCKHASH       Get the hash of one of the 256 most recent complete blocks
+0xda    POP     Remove item from stack
+0xdb    DUP16   Duplicate 16th stack item
+0xdd    PUSH30  Place 30 byte item on stack
+0xde    EXTCODESIZE     Get size of an account’s code
+0xe4    CODECOPY        Copy code running in current environment to memory
+0xe5    DUP16   Duplicate 16th stack item
+0xe8    PUSH5   Place 5 byte item on stack 0x73 0x6f 0x6c 0x63 0x43
+0xee    STOP    Halts execution
+0xef    ADDMOD  Modulo addition operation
+0xf1    STOP    Halts execution
+0xf2    CALLER  Get caller address
