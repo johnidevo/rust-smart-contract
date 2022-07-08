@@ -338,6 +338,7 @@ impl Vm {
 						let loaded_value = self.mem.get_word(offset.as_u64() as usize);
 						self.stack.push(loaded_value);
 					},
+					/*
 					Opcode::MSTORE(_addr) => {
 						let offset = self.stack.pop().unwrap();
 						let w = self.stack.pop().unwrap();
@@ -349,6 +350,7 @@ impl Vm {
 						let b = self.stack.pop().unwrap().byte(31);
 						self.mem.set_byte(offset.as_u64() as usize, b);
 					},
+					*/
 					Opcode::JUMP(_addr) => {
 						let jump_location = self.stack.pop().unwrap();
 						self.pc = jump_location.as_u64() as usize;
