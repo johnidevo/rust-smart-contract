@@ -88,8 +88,11 @@ fn run() -> Result<(), Box<dyn Error>> {
 	let filename = "./Artifacts/04 Example/Example.bin-runtime"; //args[2].clone();
 
 	println!("In file {}", filename);
-	let data = (0..32).collect();
-	let params = InputParameters::new(data);
+	//let data = (0..32).collect();
+	//let params = InputParameters::new(data);
+	let params = InputParameters::new(vec![0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2]);
+
+	
 	let mut vm = Vm::new_from_file(&filename, params)?;
 	println!("Correctly loaded VM");
 
