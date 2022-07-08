@@ -136,6 +136,8 @@ Opcode::RETURN(line) => println!("0x{:x}\tRETURN\t---Halt execution returning ou
 Opcode::DELEGATECALL(line) => println!("0x{:x}\tDELEGATECALL\t---Message-call into this account with an alternative account’s code, but persisting the current values for sender and value", line),
 Opcode::INVALID(line) => println!("0x{:x}\tINVALID\t---Designated invalid instruction", line),
 Opcode::SELFDESTRUCT(line) => println!("0x{:x}\tSELFDESTRUCT\t---Halt execution and register account for later deletion", line),
+
+Opcode::PRINT(line) => println!("0x{:x}\tPRINT\t---Halts execution", line),
 			
 			/*
 			Opcode::CALLDATASIZE(line) => println!("0x{:x}\tCALLDATASIZE\t---Halts execution", line),
