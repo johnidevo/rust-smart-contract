@@ -10,19 +10,6 @@ use std::error::Error;
 //use std::env;
 use std::io;
 
-
-fn debug(vm: &mut Vm) {
-	loop {
-		match vm.next() {
-			Some(Opcode::EOF) => break,
-			//Opcode::EOF => break,
-			Some(x) => x.describe(),
-			//x => x.describe(),
-			None => {}
-		}
-	}
-}
-
 fn create_vm(binary: Vec<u8>) -> Vm {
 	//Vm { code: binary, pc: 0, stack: Vec::new(), at_end: false}
 	let data = (0..32).collect();
@@ -44,16 +31,22 @@ fn vm_test() {
 	// execute three instructions.
 	// push 0x0f
 	vm.interpret();
+	vm.print_debug();
 	// push 0x01
 	vm.interpret();
+	vm.print_debug();
 	// add
 	vm.interpret();
+	vm.print_debug();
 	// halt
 	vm.interpret();
+	vm.print_debug();
 
 	// Now make sure the stack size is 1 and contains 16.
 	assert_eq!(1, vm.stack.len());
 	assert_eq!(16, vm.stack[0].as_u32()); // this is panicking in case of overflow.
+
+	vm.print_debug();
 }
 
 fn interpret(vm: &mut Vm) {
@@ -64,7 +57,6 @@ fn interpret(vm: &mut Vm) {
 
 		vm.interpret();
 	}
-	vm.print_stack();
 	vm.print_debug();
 	
 	/*
@@ -74,6 +66,19 @@ fn interpret(vm: &mut Vm) {
     vm.print_stack();
 	*/
 
+}
+
+
+fn debug(vm: &mut Vm) {
+	loop {
+		match vm.next() {
+			Some(Opcode::EOF) => break,
+			//Opcode::EOF => break,
+			Some(x) => x.describe(),
+			//x => x.describe(),
+			None => {}
+		}
+	}
 }
 
 fn debugger(vm: &mut Vm) {
@@ -101,8 +106,8 @@ fn debugger(vm: &mut Vm) {
 fn run() -> Result<(), Box<dyn Error>> {
 
 	//let args: Vec<String> = env::args().collect();
-	let function = "debug"; //args[1].clone();
-	let filename = "./Artifacts/02/Addition.bin-runtime"; //args[2].clone();
+	let function = "test"; //args[1].clone();
+	let filename = "./Artifacts/04/Example.bin-runtime"; //args[2].clone();
 
 	println!("In file {}", filename);
 	//let data = (0..32).collect();

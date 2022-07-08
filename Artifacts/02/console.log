@@ -4,7 +4,7 @@ Correctly loaded VM
 0x2     PUSH1   Place 1-byte item on stack 0x40
 0x4     MSTORE  Save word to memory
 0x5     CALLVALUE       Get deposited value by the instruction/transaction responsible for this execution
-                                       0x6     DUP1    Duplicate 1st stack item
+0x6     DUP1    Duplicate 1st stack item
 0x7     ISZERO  Simple not operator
 0x8     PUSH1   Place 1-byte item on stack 0xf
 0xa     JUMPI   Conditionally alter the program counter
