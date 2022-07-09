@@ -2,6 +2,7 @@
 //use primitive_types::U256;
 
 impl Opcode {
+
 	pub fn describe(&self) {
 		match self {
 

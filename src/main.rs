@@ -71,6 +71,14 @@ for x in 1..vm.code.len() {
 	println!("pc:{}", vm.pc);
 	println!("code.len:{}\n", vm.code.len());
 	vm.print_debug();
+	
+	println!("debug_stack");
+	vm.debug_stack();
+	
+	println!("debug_memory");
+	vm.debug_memory();
+	
+	
 /*
 	loop {
 
@@ -137,7 +145,7 @@ fn run() -> Result<(), Box<dyn Error>> {
 
 	//let args: Vec<String> = env::args().collect();
 	let function = "run"; //args[1].clone();
-	let filename = "./Artifacts/04/Example.bin-runtime"; //args[2].clone();
+	let filename = "./Artifacts/o1/Addition.bin-runtime"; //args[2].clone();
 
 	println!("In file {}", filename);
 	//let data = (0..32).collect();
@@ -159,16 +167,23 @@ fn run() -> Result<(), Box<dyn Error>> {
 	Ok(())
 }
 
-
-/*
 fn main() {
 	run().unwrap();
 }
-*/
+
 
 
 
 /*
+					Opcode::MSTORE8(_addr) => {
+						// stored as big endian so we get the last byte
+						let offset = self.stack.pop().unwrap();
+						let b = self.stack.pop().unwrap().byte(31);
+						
+						self.mem.set_byte(offset.as_u64() as usize, b);
+
+
+
 0xf
 0x0
 0x33

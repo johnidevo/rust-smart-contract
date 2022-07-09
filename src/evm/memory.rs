@@ -32,13 +32,20 @@ impl Memory {
 
 	pub fn set_word(&mut self, addr: usize, w: U256) {
 		let mut bytes = vec![0; 32];
+		
 		w.to_big_endian(&mut bytes);
-
+		
 		for i in 0..bytes.len() {
+			self.resize(i+addr+1);
 			self.data[i+addr] = bytes[i];
 		}
+		
+		
 	}
-
+	
+	pub fn debug(&self) {
+		println!("{:?}", self.data)
+	}
 }
 
 

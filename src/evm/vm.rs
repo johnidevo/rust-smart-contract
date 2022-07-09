@@ -12,6 +12,7 @@ use crate::evm::opcode::Opcode;
 use crate::evm::memory::Memory;
 
 
+
 pub fn decode(s: &str) -> Result<Vec<u8>, ParseIntError> {
 	(0..(s.len()-1))
 		.step_by(2)
@@ -337,7 +338,7 @@ impl Vm {
 						let data = self.input_data.get(idx);
 						self.stack.push(data);
 					},
-					/*
+					
 					Opcode::MLOAD(_addr) => {
 						let offset = self.stack.pop().unwrap();
 						let loaded_value = self.mem.get_word(offset.as_u64() as usize);
@@ -347,15 +348,18 @@ impl Vm {
 					Opcode::MSTORE(_addr) => {
 						let offset = self.stack.pop().unwrap();
 						let w = self.stack.pop().unwrap();
+						
 						self.mem.set_word(offset.as_u64() as usize, w);
+						
 					},
 					Opcode::MSTORE8(_addr) => {
 						// stored as big endian so we get the last byte
 						let offset = self.stack.pop().unwrap();
 						let b = self.stack.pop().unwrap().byte(31);
+						
 						self.mem.set_byte(offset.as_u64() as usize, b);
 					},
-					*/
+					
 					Opcode::JUMP(_addr) => {
 						let jump_location = self.stack.pop().unwrap();
 						self.pc = jump_location.as_u64() as usize;
@@ -415,6 +419,14 @@ impl Vm {
 			},
 			_ => None  
 		}
+	}
+
+	pub fn debug_stack(&self) {
+		println!("{:?}", self.stack)
+	}
+	
+	pub fn debug_memory(&self) {
+		self.mem.debug()
 	}
 
 	// see part 2 for print_stack
