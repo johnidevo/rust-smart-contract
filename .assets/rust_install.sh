@@ -8,4 +8,11 @@
 #cargo new hello_cargo
 #cd hello_cargo
 
-rustup default nightly
+#rustup default nightly #rocket
+
+## switch globally
+rustup default stable
+
+## switch locally
+rustup override set stable
+
