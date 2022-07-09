@@ -159,149 +159,14 @@ fn run() -> Result<(), Box<dyn Error>> {
 	Ok(())
 }
 
-#[macro_use] extern crate rocket;
-
-#[get("/world")]
-fn world() -> &'static str {
-    "Hello, world!"
-}
-
-#[launch]
-fn rocket() -> _ {
-    rocket::build().mount("/hello", routes![world])
-}
 
 /*
 fn main() {
 	run().unwrap();
 }
 */
-/* ################# */
-
-/*
-#![feature(proc_macro_hygiene, decl_macro)]
-
-#[macro_use] extern crate rocket;
-use rocket_contrib::json::Json;
-use serde::Deserialize;
-
-#[derive(Debug, PartialEq, Eq, Deserialize)]
-struct User {
-    id: i64,
-    USR_Email: String,
-    USR_Password: String,
-    USR_Enabled: i32,
-    USR_MAC_Address: String
-}
-
-#[post("/", format = "json", data = "<user_input>")]
-fn helloPost(user_input: Json<User>) -> String {
-    format!("print test {:?}", user_input)
-}
-
-fn main() {
-    rocket::ignite().mount("/hello", routes![helloPost]).launch();
-}
-
-*/
 
 
-/*
-#[macro_use] extern crate rocket;
-
-#[get("/")]
-fn index() -> &'static str {
-    "Hello, world!   kkdd"
-}
-
-
-#[launch]
-fn rocket() -> _ {
-    //rocket::build().mount("/", routes![index])
-	  rocket::ignite()
-        .manage(CodeRepo { contracts: std::sync::Mutex::new(HashMap::new()) })
-        .mount("/", routes![transact]).launch();
-
-}
-*/
-
-/*
-fn main() {
-	rocket::ignite()
-		.manage(CodeRepo { contracts: std::sync::Mutex::new(HashMap::new()) })
-		.mount("/", routes![transact, deploy]).launch();
-}
-
-#[post("/transact", format = "json", data = "<message>")]
-fn transact(message: Json<TransactionInput>, state: State<CodeRepo>) -> JsonValue {
-
-	let mut code: Vec<u8> = Vec::new();
-	{
-		let contracts = state.contracts.lock().unwrap();
-		match contracts.get(&message.0.to) {
-		}
-	}
-	let input_str = message.0.data;
-
-	
-	println!("In file {}", filename);
-	//let data = (0..32).collect();
-	//let params = InputParameters::new(data);
-	let params = InputParameters::new(vec![0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2]);
-
-
-	let mut vm = Vm::new_from_file(&filename, params)?;
-	println!("Correctly loaded VM");
-	
-	
-	
-	
-
-	// No error handling here :D
-	let v = vm::decode(&input_str).expect("Input data should be hexadecimal");
-	let mut vm = Vm::new(code, InputParameters::new(v));
-
-
-    while !vm.at_end {
-        vm.interpret();
-    }
-
-
-    match vm.status {
-        vm::VmStatus::DONE => {
-            match vm.stack.pop() {
-                //let returned = v.low_u64();
-                Ok(v) => json!({"result": ""}), //returned})
-                Err => json!({"error": "Tried to return by no value on top of stack"})
-            }
-        },
-        vm::VmStatus::REVERT => json!({"error": "error while running smart contract"}),
-        _ => panic!("ABORRTTTTT"),
-    }
-
-}
-
-#[derive(Serialize, Deserialize)]
-struct DeployInput {
-    binary: String,
-}
-
-*/
-
-
-
-/* ################# */
-
-/*
-#![feature(proc_macro_hygiene, decl_macro)]
-#[macro_use] extern crate rocket;
-
-#[get("/")]
-fn index() -> &'static str {
-    "Hello, world!"
-}
-
-*/
 
 /*
 0xf
