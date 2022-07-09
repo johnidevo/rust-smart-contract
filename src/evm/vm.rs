@@ -31,6 +31,40 @@ pub struct Vm {
 }
 
 impl Vm {
+		pub fn new(filename: &str, input_data: InputParameters) -> Result<Vm, Box<dyn Error>> {
+		//println!("{}", Path::new("./Artifacts/evm/mod.rs").exists());
+		//println!("{}", filename);
+		let mut file = File::open(filename).expect("File not found");
+		let mut buffer = String::new();
+		file.read_to_string(&mut buffer).expect("Error while reading file");
+		
+		/*
+		let mut f = File::open(filename)?;
+		let mut buffer = String::new();
+		f.read_to_string(&mut buffer)?;
+		*/
+		
+		let code = decode(&buffer)?;
+/*
+		for b in &code {
+			println!("0x{:x}", b) 
+		}
+		println!("{}", buffer);
+*/
+		
+		Ok(Vm { 
+			code: code, 
+			pc: 0, 
+			stack: Vec::new(), 
+			mem: Memory::new(), 
+			input_data, 
+			at_end: false
+		})
+		//Ok(Vm { code: code, pc: 0, stack: Vec::new(), at_end: false})
+		//Ok(Vm { code: code, pc: 0, stack: Vec::new()})
+	}
+
+	
 	pub fn new_from_file(filename: &str, input_data: InputParameters) -> Result<Vm, Box<dyn Error>> {
 		//println!("{}", Path::new("./Artifacts/evm/mod.rs").exists());
 		//println!("{}", filename);

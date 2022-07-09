@@ -172,6 +172,18 @@ fn main() {
 }
 */
 /* ################# */
+
+#[post("/transact", format = "json", data = "<message>")]
+fn transact(message: Json<TransactionInput>) -> JsonValue {
+    json!({ "status": "ok" })
+}
+
+fn main() {
+    rocket::ignite().mount("/", routes![transact]).launch();
+}
+
+
+/*
 #[macro_use] extern crate rocket;
 
 #[get("/")]
@@ -179,7 +191,7 @@ fn index() -> &'static str {
     "Hello, world!   kkdd"
 }
 
-/*
+
 #[launch]
 fn rocket() -> _ {
     //rocket::build().mount("/", routes![index])
@@ -190,6 +202,8 @@ fn rocket() -> _ {
 }
 */
 
+
+/*
 fn main() {
 	rocket::ignite()
 		.manage(CodeRepo { contracts: std::sync::Mutex::new(HashMap::new()) })
@@ -199,23 +213,39 @@ fn main() {
 #[post("/transact", format = "json", data = "<message>")]
 fn transact(message: Json<TransactionInput>, state: State<CodeRepo>) -> JsonValue {
 
-    let mut code: Vec<u8> = Vec::new();
-    {
-        let contracts = state.contracts.lock().unwrap();
-        match contracts.get(&message.0.to) {
-            Some(contract) => code = contract.clone(),
-            None => return json!({"error": "Cannot find contract"}),
-        }
-    }
-    let input_str = message.0.data;
+	let mut code: Vec<u8> = Vec::new();
+	{
+		let contracts = state.contracts.lock().unwrap();
+		match contracts.get(&message.0.to) {
+			Some(contract) => code = contract.clone(),
+			None => return json!({"error": "Cannot find contract"}),
+		}
+	}
+	let input_str = message.0.data;
 
-    // No error handling here :D
-    let v = vm::decode(&input_str).expect("Input data should be hexadecimal");
-    let mut vm = Vm::new(code, InputParameters::new(v));
-    
+	
+	println!("In file {}", filename);
+	//let data = (0..32).collect();
+	//let params = InputParameters::new(data);
+	let params = InputParameters::new(vec![0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2]);
+
+
+	let mut vm = Vm::new_from_file(&filename, params)?;
+	println!("Correctly loaded VM");
+	
+	
+	
+	
+
+	// No error handling here :D
+	let v = vm::decode(&input_str).expect("Input data should be hexadecimal");
+	let mut vm = Vm::new(code, InputParameters::new(v));
+
+
     while !vm.at_end {
         vm.interpret();
     }
+
 
     match vm.status {
         vm::VmStatus::DONE => {
@@ -235,6 +265,10 @@ fn transact(message: Json<TransactionInput>, state: State<CodeRepo>) -> JsonValu
 struct DeployInput {
     binary: String,
 }
+
+*/
+
+
 
 /* ################# */
 
