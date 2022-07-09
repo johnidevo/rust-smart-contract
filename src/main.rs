@@ -1,12 +1,3 @@
-#![feature(proc_macro_hygiene, decl_macro)]
-#[macro_use] extern crate rocket;
-#[macro_use] extern crate rocket_contrib;
-#[macro_use] extern crate serde_derive;
-
-
-use rocket::State;
-use rocket_contrib::json::{Json, JsonValue};
-
 
 pub mod evm;
 pub mod params;
@@ -18,6 +9,7 @@ use params::params::InputParameters;
 use std::error::Error;
 //use std::env;
 use std::io;
+
 
 fn create_vm(binary: Vec<u8>) -> Vm {
 	//Vm { code: binary, pc: 0, stack: Vec::new(), at_end: false}
@@ -166,6 +158,19 @@ fn run() -> Result<(), Box<dyn Error>> {
 
 	Ok(())
 }
+
+#[macro_use] extern crate rocket;
+
+#[get("/world")]
+fn world() -> &'static str {
+    "Hello, world!"
+}
+
+#[launch]
+fn rocket() -> _ {
+    rocket::build().mount("/hello", routes![world])
+}
+
 /*
 fn main() {
 	run().unwrap();
@@ -173,14 +178,32 @@ fn main() {
 */
 /* ################# */
 
-#[post("/transact", format = "json", data = "<message>")]
-fn transact(message: Json<TransactionInput>) -> JsonValue {
-    json!({ "status": "ok" })
+/*
+#![feature(proc_macro_hygiene, decl_macro)]
+
+#[macro_use] extern crate rocket;
+use rocket_contrib::json::Json;
+use serde::Deserialize;
+
+#[derive(Debug, PartialEq, Eq, Deserialize)]
+struct User {
+    id: i64,
+    USR_Email: String,
+    USR_Password: String,
+    USR_Enabled: i32,
+    USR_MAC_Address: String
+}
+
+#[post("/", format = "json", data = "<user_input>")]
+fn helloPost(user_input: Json<User>) -> String {
+    format!("print test {:?}", user_input)
 }
 
 fn main() {
-    rocket::ignite().mount("/", routes![transact]).launch();
+    rocket::ignite().mount("/hello", routes![helloPost]).launch();
 }
+
+*/
 
 
 /*
@@ -202,7 +225,6 @@ fn rocket() -> _ {
 }
 */
 
-
 /*
 fn main() {
 	rocket::ignite()
@@ -217,8 +239,6 @@ fn transact(message: Json<TransactionInput>, state: State<CodeRepo>) -> JsonValu
 	{
 		let contracts = state.contracts.lock().unwrap();
 		match contracts.get(&message.0.to) {
-			Some(contract) => code = contract.clone(),
-			None => return json!({"error": "Cannot find contract"}),
 		}
 	}
 	let input_str = message.0.data;
