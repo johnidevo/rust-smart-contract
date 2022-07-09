@@ -158,10 +158,34 @@ fn run() -> Result<(), Box<dyn Error>> {
 	Ok(())
 }
 
-fn main() {
-	run().unwrap();
+#[feature(proc_macro_hygiene, decl_macro)]
+#![feature(decl_macro)]
+#[macro_use] extern crate rocket;
+
+
+#[get("/")]
+fn index() -> &'static str {
+    "Hello, world!"
 }
 
+fn main() {
+	run().unwrap();
+	
+	// rocket HTTP server
+	rocket::ignite().mount("/", routes![index]).launch();
+}
+
+
+/*
+#![feature(proc_macro_hygiene, decl_macro)]
+#[macro_use] extern crate rocket;
+
+#[get("/")]
+fn index() -> &'static str {
+    "Hello, world!"
+}
+
+*/
 
 /*
 0xf
