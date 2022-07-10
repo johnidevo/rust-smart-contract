@@ -312,7 +312,8 @@ impl Vm {
 			_ => { self.pc += 1;  None}
 		}
 	}
-
+	
+	
 	pub fn interpret(&mut self) {
 		let maybe_op = self.next();
 
@@ -338,17 +339,19 @@ impl Vm {
 						let data = self.input_data.get(idx);
 						self.stack.push(data);
 					},
-					
+					/*
 					Opcode::MLOAD(_addr) => {
 						let offset = self.stack.pop().unwrap();
 						let loaded_value = self.mem.get_word(offset.as_u64() as usize);
+						
+
+						
 						self.stack.push(loaded_value);
 					},
 					
 					Opcode::MSTORE(_addr) => {
 						let offset = self.stack.pop().unwrap();
 						let w = self.stack.pop().unwrap();
-						
 						self.mem.set_word(offset.as_u64() as usize, w);
 						
 					},
@@ -359,7 +362,7 @@ impl Vm {
 						
 						self.mem.set_byte(offset.as_u64() as usize, b);
 					},
-					
+					*/
 					Opcode::JUMP(_addr) => {
 						let jump_location = self.stack.pop().unwrap();
 						self.pc = jump_location.as_u64() as usize;
@@ -446,5 +449,12 @@ impl Vm {
 		println!("pc:{}\n", self.pc);
 		println!("Stack:");
 		self.print_stack();
+
+		println!("debug_stack");
+		self.debug_stack();
+
+		println!("debug_memory");
+		self.debug_memory();
+		
 	}
 }

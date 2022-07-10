@@ -1,0 +1,54 @@
+In file ./Artifacts/o1/Addition.bin-runtime
+Correctly loaded VM
+0x0     PUSH1           Place 1-byte item on stack 0x80
+0x2     PUSH1           Place 1-byte item on stack 0x40
+0x4     MSTORE          Save word to memory
+0x5     CALLVALUE       Get deposited value by the instruction/transaction responsible for this execution
+0x6     DUP1            Duplicate 1st stack item
+0x7     ISZERO          Simple not operator
+0x8     PUSH1           Place 1-byte item on stack 0xf
+0xa     JUMPI           Conditionally alter the program counter
+0xf     JUMPDEST        Mark a valid destination for jumps
+0x10    POP             Remove item from stack
+0x11    PUSH1           Place 1-byte item on stack 0x4
+0x13    CALLDATASIZE    Get size of input data in current environment
+0x14    LT              Less-than comparison
+0x15    PUSH1           Place 1-byte item on stack 0x32
+0x17    JUMPI           Conditionally alter the program counter
+0x32    JUMPDEST        Mark a valid destination for jumps
+0x33    PUSH1           Place 1-byte item on stack 0x0
+0x35    DUP1            Duplicate 1st stack item
+0x37    JUMPDEST        Mark a valid destination for jumps
+0x38    PUSH1           Place 1-byte item on stack 0x3f
+0x3a    PUSH1           Place 1-byte item on stack 0x0
+0x3c    SLOAD           Load word from storage
+0x3d    DUP2            Duplicate 2nd stack item
+0x3e    JUMP            Alter the program counter
+0x0     PUSH1           Place 1-byte item on stack 0x80
+0x2     PUSH1           Place 1-byte item on stack 0x40
+0x4     MSTORE          Save word to memory
+0x5     CALLVALUE       Get deposited value by the instruction/transaction responsible for this execution
+0x6     DUP1            Duplicate 1st stack item
+0x7     ISZERO          Simple not operator
+0x8     PUSH1           Place 1-byte item on stack 0xf
+0xa     JUMPI           Conditionally alter the program counter
+0xf     JUMPDEST        Mark a valid destination for jumps
+0x10    POP             Remove item from stack
+0x11    PUSH1           Place 1-byte item on stack 0x4
+0x13    CALLDATASIZE    Get size of input data in current environment
+0x14    LT              Less-than comparison
+0x15    PUSH1           Place 1-byte item on stack 0x32
+0x17    JUMPI           Conditionally alter the program counter
+0x32    JUMPDEST        Mark a valid destination for jumps
+0x33    PUSH1           Place 1-byte item on stack 0x0
+0x35    DUP1            Duplicate 1st stack item
+0x37    JUMPDEST        Mark a valid destination for jumps
+0x38    PUSH1           Place 1-byte item on stack 0x3f
+0x3a    PUSH1           Place 1-byte item on stack 0x0
+0x3c    SLOAD           Load word from storage
+0x3d    DUP2            Duplicate 2nd stack item
+0x3e    JUMP            Alter the program counter
+0x0     PUSH1           Place 1-byte item on stack 0x80
+0x2     PUSH1           Place 1-byte item on stack 0x40
+0x4     MSTORE          Save word to memory
+0x5     CALLVALUE       Get deposited value by the instruction/transaction responsible for this execution
