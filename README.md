@@ -275,11 +275,13 @@ Model the input data and CALLDATALOAD/CALLDATASIZE in our VM
 
 
 Crafting the smart contract
+```
 * 0x0         PUSH1   Place 1-byte item on the stack 0x80
 * 0x2         PUSH1   Place 1-byte item on the stack 0x40
 * Stack:
 * |1:         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 64]|
 * |0:         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128]|
+```
 * We can try this without the HTTP interface using the existing code. Use this as input parameter and run the binary. It should finish with 0x04 at the top of the stack.
 *  let input_data = params::InputParameters::new(vec![0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2]);
 * According to the previous post, a smart contract is structured the following way:
@@ -330,6 +332,82 @@ JUMPI
 PUSH error
 JUMP
 ```
+* Here we use the same trick as solc. Divide by (1 « 29) to get the 4 first bytes from the 32 bytes number. If no method ID is matched, we will jump to the error block.
+
+
+Validation and error handling
+
+
+* Error handling will halt the execution, using the REVERT opcode. Before running the routing code, we also need to check whether the input size if at least 4 bytes. This can be done with
+```
+* CALLDATASIZE
+* PUSH 0x4
+* LT
+* ISZERO
+* PUSH error
+* JUMPI
+* PUSH routing
+* JUMP
+```
+
+
+All in all
+* At the end, the assembly code is quite small. First, start by writing the size check. Then, add the routing part and the method’s implementation. Finish by adding the error handling code. JUMPDEST should not be forgotten. It will indicate that an instruction is the destination of a JUMP instruction. By the way, this smart contract is not using the memory so the free-pointer address is not set. Now, we can write this as a hexadecimal string the same way solc would compile our solidity code. I replaced the labels by the correct addresses here.
+```
+0x00    0x36    CALLDATASIZE
+0x01    0x60    PUSH1 0x04
+0x02    0x04
+0x03    0x10    LT
+0x04    0x15    ISZERO
+0x05    0x60    PUSH1 error
+0x06    0x4A
+0x07    0x57    JUMPI
+0x08    0x60    PUSH 0x00
+0x09    0x00
+0x0A    0x35    CALLDATALOAD
+0x0B    0x7C    PUSH29 10000000000000000000000000000
+0x0C    0x01
+0x0D    0x00
+…
+```
+
+
+* Final assembly as hexadecimal string: “0x3660041015604A576000357C0100000000000000000000000000000000000000000000000000000000900480600114603A57600214604357604a5b60043560243501005b6004358002005bfd”
+* We can try this without the HTTP interface using the existing code. Use this as input parameter and run the binary. It should finish with 0x04 at the top of the stack.
+```
+   let input_data = params::InputParameters::new(
+        vec![0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2]);
+```
+
+
+JSON interface
+
+
+* Ethereum defines a JSON-RPC API, which can be found here in the Ethereum wiki. This API exposes a lot of functions, but the one we are interested in is how to send a transaction to a smart contract, which will be executed by the EVM.
+* eth_sendTransaction is the one we want.
+* Creates new message call transaction or a contract creation, if the data field contains code.
+* I will not use JSON-RPC to expose an API to users. Instead, I will create a simple HTTP server that will accept POST requests, extract the parameters from the body in JSON format, execute the smart contract with the given input and send back the output.
+
+
+Introducing Rocket, “A Web Framework for Rust”
+
+
+* 🤝🤝🤝🚩🚩🚩🔥🔥🔥
+
+
+Storing smart contracts in Rocket’s managed state
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
