@@ -219,6 +219,7 @@ Emulation in Rust
 * https://github.com/ethereum/go-ethereum/blob/b66f793443f572082d24f115e706532a620ba3ee/core/vm/memory.go
 * I will do something similar. Simply use a structure wrapping a Vec<u8>. Resize it if an instruction needs to access an address. For our tests, the following should do the trick: // memory.rs
 
+✋✋✋🛑🛑🛑⏳⏳⏳
 
 (Part 5) by snoozetime (2018)
 * But first of all what happens when an Ethereum peer receives a new message?

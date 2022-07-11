@@ -38,17 +38,54 @@ impl Vm {
 	pub fn new_from_file(filename: &str, input_data: InputParameters) -> Result<Vm, Box<dyn Error>> {
 		//println!("{}", Path::new("./Artifacts/evm/mod.rs").exists());
 		//println!("{}", filename);
-		let mut file = File::open(filename).expect("File not found");
-		let mut buffer = String::new();
-		file.read_to_string(&mut buffer).expect("Error while reading file");
+		//let mut file = File::open(filename).expect("File not found");
+		
+		let  buffer ="6080604052348015600f57600080fd5b506004361060325760003560e01c80630c55699c146037578063a5f3c23b146051575b600080fd5b603f60005481565b60405190815260200160405180910390f35b6060605c3660046071565b6062565b005b606a818360a8565b6000555050565b60008060408385031215608357600080fd5b50508035926020909101359150565b634e487b7160e01b600052601160045260246000fd5b600080821280156001600160ff1b038490038513161560c75760c76092565b600160ff1b839003841281161560dd5760dd6092565b5050019056fea2646970667358221220af036e3dd0dcda8d8f829e58ab0d92a71bc53cfe8dcbabed853145a8c922d65f64736f6c634300080f0033";
+		//let mut buffer = String::new();
+		//file.read_to_string(&mut buffer).expect("Error while reading file");
 		
 		/*
 		let mut f = File::open(filename)?;
 		let mut buffer = String::new();
 		f.read_to_string(&mut buffer)?;
+		
+		    for x in (1..10).step_by(2) {
+        println!("{}", x);
+    }
 		*/
 		
+
+	let mut count = 0;
+	for pair in (0..(buffer.len()-1)).step_by(2)
+	.map(|single_letter| { count += 1; (single_letter, count) })
+	{
+		println!("{:?}", pair);
+	}
+		
+		
+/*
+		for i in (0..buflen).step_by(2) {
+			
+			println!("{}", buflen);
+			println!("{}", i);
+		}
+		
+		
+		
+		let coded: Vec<u8> = (0..(buffer.len()-1))
+			.step_by(2)
+				.map(|i| u8::from_str_radix(&buffer[i..i+2], 16))
+		.collect();
+		
+		println!("decoded coded");
+		println!("{:?}", coded);
+		println!("end decoded coded");
+		*/
 		let code = decode(&buffer)?;
+		
+		println!("decoded");
+		println!("{:?}", code);
+		println!("end decoded");
 /*
 		for b in &code {
 			println!("0x{:x}", b) 
@@ -70,8 +107,8 @@ impl Vm {
 
 	// decoding
 	pub fn next(&mut self) -> Option<Opcode> {
-		
-		//println!("{:?}", self.code);
+		let addr = self.pc;
+		println!("{:?}", self.code[addr]);
 		
 		if self.pc >= self.code.len() {
 			return Some(Opcode::EOF);
